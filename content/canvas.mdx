@@ -1,0 +1,110 @@
+---
+title: Canvas API
+description: My First Try on Canvas API
+date: 2024-04-02
+---
+
+import { Canvas as Trigonometry } from "@/components/canvas/trigonometry";
+import { Canvas as Math } from "@/components/canvas/math";
+import { Canvas as WebGL } from "@/components/canvas/webgl";
+
+## Canvas API
+
+It is a low-level, but useful API.
+To render something, you can choose different contexts, like `2d` for example.
+This gives you a flexibility for using any rendering methods supported by your browser including WebGL.
+
+When composed with React.js, you usually want to wrap it in an `useEffect` hook.
+
+<div className="w-full max-w-[400px] mx-auto">
+  <Math />
+</div>
+
+### Dynamic Size
+
+It is also possible to adjust the size of canvas dynamically. Be careful of the pixel ratio, it may impact the quality of rendering.
+
+In general, `canvas.width` does not equal to `canvas.clientWidth`.
+Instead, `canvas.width` is the size of your drawing.
+After the image being rendered, the rendered image will be scaled to the client size.
+It can be problematic when the drawing size is lower than its client size, sometimes resulting in a "blurry" resolution image.
+
+You should multiply the drawing size with user's pixel ratio, so that it can look sharper.
+
+```tsx
+"use client";
+import { useRef, useEffect } from "react";
+
+export function Canvas() {
+  const ref = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const ctx = element.getContext("2d")!;
+    const width = element.clientWidth,
+      height = element.clientHeight;
+
+    // set width and height dynamically
+    element.width = width * window.devicePixelRatio;
+    element.height = height * window.devicePixelRatio;
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+    // draw something
+  }, []);
+
+  return <canvas ref={ref} />;
+}
+```
+
+### Animation
+
+To render an animation smoothly, you can utilize the `requestAnimationFrame` function. It is guaranteed to be fired every frame, and is interupted automatically when user leaves the page.
+
+<Trigonometry />
+
+Remember to stop it when the component is unmounted.
+
+```ts
+useEffect(() => {
+  let unmounted = false;
+
+  function render() {
+    if (unmounted) return;
+
+    // draw something
+    requestAnimationFrame(() => render());
+  }
+
+  return () => {
+    unmounted = true;
+  };
+}, []);
+```
+
+### WebGL
+
+Sometimes we do want a more powerful, performant rendering method, and WebGL might be the best opinion.
+As named, it's the Web version of OpenGL. You can write shaders in GLSL (a programming language similar to C) and compile them in runtime.
+It is very effective, especially for GPU accelerated animations that involves heavy calculations.
+
+But it can be pretty difficult for beginners, and configuring it correctly takes patience.
+I prefer using [Phenomenon](https://github.com/vaneenige/phenomenon) as a wrapper for WebGL, it saves a lot of time.
+
+<div className="relative w-full h-[200px] rounded-xl">
+  <div
+    className="absolute inset-0 pointer-events-none select-none rounded-[inherit]"
+    style={{
+      boxShadow:
+        "inset 0 2px 5px rgba(235,235,235, 0.5), inset 0 -2px 5px rgba(160,160,160, 0.3)",
+    }}
+  />
+  <WebGL className="size-full rounded-[inherit]" />
+</div>
+
+### Art and Passion
+
+This is the most enjoyable piece of Web Design.
+You have a powerful, comprehensive set of tools and infinite possibilities to design something.
+Hope this post can inspire you to create something cool!

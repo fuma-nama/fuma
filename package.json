@@ -1,0 +1,46 @@
+{
+  "name": "fuma-nama",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "dotenv -e .env.local -- prisma db push",
+    "migrate:dev": "dotenv -e .env.local -- prisma migrate dev",
+    "migrate:deploy": "dotenv -e .env.production -- prisma migrate deploy"
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "^2.4.1",
+    "@fuma-comment/next": "^0.3.1",
+    "@fuma-comment/prisma-adapter": "^0.3.2",
+    "@fuma-comment/react": "^0.3.1",
+    "@fuma-content/next": "^0.0.1",
+    "@prisma/client": "^5.16.1",
+    "@radix-ui/react-scroll-area": "^1.1.0",
+    "@shikijs/rehype": "^1.10.0",
+    "class-variance-authority": "^0.7.0",
+    "fuma-content": "^0.0.1",
+    "next": "14.2.4",
+    "next-auth": "5.0.0-beta.19",
+    "phenomenon": "^1.6.0",
+    "postcss-lightningcss": "^1.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-spotify-embed": "^2.0.4",
+    "shiki": "^1.10.0",
+    "tailwind-merge": "^2.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.13",
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "dotenv-cli": "^7.4.2",
+    "postcss": "^8.4.39",
+    "prisma": "^5.16.1",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.2"
+  }
+}

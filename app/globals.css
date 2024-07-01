@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hover-card {
+  --opacity: 0;
+  --bg-y: 0%;
+  --bg-x: 0%;
+  --radius: 16px;
+  --duration: 500ms;
+  transition: transform cubic-bezier(0.075, 0.82, 0.165, 1) var(--duration);
+}
+
+.hover-card-layer {
+  z-index: -1;
+  mix-blend-mode: color-dodge;
+  opacity: var(--opacity);
+  will-change: background;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) var(--duration);
+  transition-property: opacity;
+  clip-path: inset(0 0 1px 0 round var(--radius));
+  --foil-svg: url('data:image/svg+xml,<svg width="1368" height="1132" viewBox="0 0 1368 1132" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_186_39)"><rect width="1368" height="1132" fill="black"/><ellipse cx="238.5" cy="153.131" rx="116.5" ry="121.123" fill="white"/><ellipse cx="535.5" cy="153.131" rx="116.5" ry="121.123" fill="white"/><ellipse cx="832.5" cy="153.131" rx="116.5" ry="121.123" fill="white"/><ellipse cx="1129.5" cy="153.131" rx="116.5" ry="121.123" fill="white"/><ellipse cx="238.5" cy="428.377" rx="116.5" ry="121.123" fill="white"/><ellipse cx="535.5" cy="428.377" rx="116.5" ry="121.123" fill="white"/><ellipse cx="832.5" cy="428.377" rx="116.5" ry="121.123" fill="white"/><ellipse cx="1129.5" cy="428.377" rx="116.5" ry="121.123" fill="white"/><ellipse cx="238.5" cy="703.623" rx="116.5" ry="121.123" fill="white"/><ellipse cx="535.5" cy="703.623" rx="116.5" ry="121.123" fill="white"/><ellipse cx="832.5" cy="703.623" rx="116.5" ry="121.123" fill="white"/><ellipse cx="1129.5" cy="703.623" rx="116.5" ry="121.123" fill="white"/><ellipse cx="238.5" cy="978.869" rx="116.5" ry="121.123" fill="white"/><ellipse cx="535.5" cy="978.869" rx="116.5" ry="121.123" fill="white"/><ellipse cx="832.5" cy="978.869" rx="116.5" ry="121.123" fill="white"/><ellipse cx="1129.5" cy="978.869" rx="116.5" ry="121.123" fill="white"/></g><defs><clipPath id="clip0_186_39"><rect width="1368" height="1132" fill="white"/></clipPath></defs></svg>');
+  --step: 5%;
+  --foil-size: 50%;
+  --pattern: var(--foil-svg) center/100% no-repeat;
+  --rainbow: repeating-linear-gradient(
+      0deg,
+      rgb(255, 119, 115) calc(var(--step) * 1),
+      rgba(255, 237, 95, 1) calc(var(--step) * 2),
+      rgba(168, 255, 95, 1) calc(var(--step) * 3),
+      rgba(131, 255, 247, 1) calc(var(--step) * 4),
+      rgba(120, 148, 255, 1) calc(var(--step) * 5),
+      rgb(216, 117, 255) calc(var(--step) * 6),
+      rgb(255, 119, 115) calc(var(--step) * 7)
+    )
+    0% var(--bg-y) / 200% 700% no-repeat;
+  --diagonal: repeating-linear-gradient(
+      128deg,
+      #0e152e 0%,
+      hsl(180, 10%, 60%) 3.8%,
+      hsl(180, 10%, 60%) 4.5%,
+      hsl(180, 10%, 60%) 5.2%,
+      #0e152e 10%,
+      #0e152e 12%
+    )
+    var(--bg-x) var(--bg-y) / 300% no-repeat;
+  --shade: radial-gradient(
+      farthest-corner circle at var(--m-x) var(--m-y),
+      rgba(255, 255, 255, 0.1) 12%,
+      rgba(255, 255, 255, 0.15) 20%,
+      rgba(255, 255, 255, 0.25) 120%
+    )
+    var(--bg-x) var(--bg-y) / 300% no-repeat;
+  background-blend-mode: hue, hue, hue, overlay;
+  background: var(--pattern), var(--rainbow), var(--diagonal), var(--shade);
+}
+
+.hover-card-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  grid-area: inherit;
+  background-image: inherit;
+  background-repeat: inherit;
+  background-attachment: inherit;
+  background-origin: inherit;
+  background-clip: inherit;
+  background-color: inherit;
+  mix-blend-mode: exclusion;
+  background-size: var(--foil-size), 200% 400%, 800%, 200%;
+  background-position: center, 0% var(--bg-y),
+    calc(var(--bg-x) * -1) calc(var(--bg-y) * -1), var(--bg-x) var(--bg-y);
+  background-blend-mode: soft-light, hue, hard-light;
+}

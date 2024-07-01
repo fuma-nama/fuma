@@ -1,0 +1,105 @@
+---
+title: HTML
+description: Why HTML?
+date: 2024-05-21
+---
+
+## HTMl
+
+About the essence of **HTML** and **DOM tree**, I honestly think it is a bad design in modern web.
+It does something different from native apps, and produces a lot of **redundant work**.
+
+### JavaScript Bias
+
+Why do we need to avoid scripts that much in web apps?
+
+We developed **Hydration**, **Server-Side Rendering**, and a bunch of things to reduce the bundle size of JavaScript on client-side.
+The reason why bundle size matters, is that it becomes heavy at some point of our development, and slows down the loading speed.
+
+**Many APIs are offered by browsers:** UI, Audio APIs... Why is it heavy?
+
+The reason is simple: How could you implement a popover component? Yes, you will go ahead and search for NPM modules that solves the problem.
+**These packages increased your client bundle size**, but why the Popover API is arriving so late?
+
+As of 2024 May, Popover is yet an experimental feature and has inconsistency problems.
+**The problem turns out, to be a problem of HTML.**
+
+### Lack of Flexibility
+
+In HTML, We cannot make a proper implementation of complex, advanced components without **hacky ways**.
+
+Like **Rich text editors, color pickers, checkbox with custom icons, customised select menus**, we ultimately _fixed_ it with JavaScript and some magic.
+Why aren't they being offered by browsers? We obviously needed a better select menu that is more flexible, a more advanced input field with Rich text support.
+
+Accessing the UI through DOM tree, **there are very few options to customise the elements**.
+CSS as a styling language, can't be as flexible as JavaScript.
+We cannot customise the dropdown menu of `<select />` and its logic with CSS, but neither with JavaScript.
+
+HTML lacks of flexibility, and **these approaches are not performance efficient.**
+
+### Performance
+
+In a native app, UIs are built with code.
+We can directly interact with components and even constructs them.
+Like `new Spinner()` and do whatever we want.
+
+Doing the same thing in HTML, we need to modify the DOM tree, inserting nodes by _passing HTML_,
+so that browsers can parse that HTML and _make it back_ a native UI element.
+
+Theoretically browsers will construct/update the DOM.
+The work doesn't stop there, rendering engines have to do a bunch of things (e.g. recalculating, perform rearrangements to layouts) to actually update the UI.
+it can be **expensive**, and finally you still have to find the node back in JavaScript just to interact with it.
+As your web app grows,
+**It becomes a heavy layer between the UI and JavaScript, and slows down the performance.**
+
+It is negligible because rendering engines are incredibly fast.
+However, remember the aforementioned flexibility problem? We spread `div` elements everywhere, using complex stylings and DOM structure to fix layout problems.
+We developed virtual scroll in many ways, but it becomes difficult to fix cross-browser problems.
+We developed rich text editor with `contentEditable` attribute, which apparently isn't something efficient.
+**The lack of advanced elements forced us to take hacky, non-native path,** which makes performance worse.
+
+Summing all side effects, can lead to a poor performance.
+
+Can't we just skip HTML and write UIs with JavaScript?
+Taking some references from native app SDKs,
+all above can be simplified by a new API.
+
+```jsx
+const spinner = new Spinner();
+spinner.setStyle({
+    ...
+})
+
+container.insert(spinner)
+
+// or just
+
+container.insert(<Spinner style={{...}} />)
+```
+
+**Offer more native components, and let us declare it with code.**
+
+### SEO
+
+Some may argue that using JavaScript instead of HTML hinders **crawlers and SEO**,
+but that is another problem with HTML.
+
+**Meta tags are written for crawlers, not the users**, they should be staying away from the actual UI, but instead, they are loaded into all user’s devices through HTML.
+
+We can just write something **specific to crawlers**, rather than putting everything to your HTML.
+The idea of `robot.txt` is a nice example, we can have a crawler-specific file like `meta.xml` for search engines.
+
+### Aesthetic?
+
+The existence of Kotlin Compose, Swift and even JSX proven that it is possible to write something elegant with code and potentially “visualise your UI structure”.
+**HTML stands no point from being a cleaner way to write UIs.**
+
+Also we have been using bundlers and transpilers intensely nowadays, it is common to write JSX and compile back to JavaScript.
+
+### Conclusion
+
+In this article, I pointed out some problems I knew about HTML.
+HTML isn't that terrible, rendering engines are written in low-level languages like C++, and they are quite fast.
+However, it doesn't mean it is perfect. It has problems, especially when we are developing something more powerful.
+
+Many amazing developers are putting great efforts to make the Web better, and it is never late in this ever-evolving industry.

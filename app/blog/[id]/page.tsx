@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Date } from "./page.client";
 import { createMetadata } from "@/lib/metadata";
-import { type AnchorHTMLAttributes } from "react";
+import { HTMLAttributes, type AnchorHTMLAttributes } from "react";
 import dynamic from "next/dynamic";
 
 const CommentsWithAuth = dynamic(
@@ -28,6 +28,23 @@ function MDXLink({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   return <Link href={href} {...props} />;
 }
 
+function Heading({
+  as: As,
+  ...props
+}: { as: string } & HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <a
+      href={props.id ? `#${props.id}` : undefined}
+      className="relative group no-underline"
+    >
+      <span className="absolute -left-5 text-neutral-500 text-base h-full content-center opacity-0 transition-opacity group-hover:opacity-100">
+        #
+      </span>
+      <As {...props}>{props.children}</As>
+    </a>
+  );
+}
+
 export default function Page({ params }: { params: { id: string } }) {
   const document = documents.find((d) => d.id === params.id);
   if (!document) notFound();
@@ -38,6 +55,14 @@ export default function Page({ params }: { params: { id: string } }) {
         <document.renderer
           components={{
             a: MDXLink,
+            ...Object.fromEntries(
+              ["h1", "h2", "h3", "h4", "h5", "h6"].map((type) => [
+                type,
+                (props: HTMLAttributes<HTMLHeadingElement>) => (
+                  <Heading as={type} {...props} />
+                ),
+              ])
+            ),
             pre: ({ className, style: _style, ...props }) => (
               <pre
                 className={cn(

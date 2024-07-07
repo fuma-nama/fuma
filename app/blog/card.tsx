@@ -19,7 +19,7 @@ export function Card({
   return (
     <Link
       href={`/blog/${id}`}
-      className="relative group overflow-hidden z-[2] flex flex-row shadow-inner shadow-neutral-800 p-4 rounded-lg border border-neutral-900 transition-colors hover:bg-neutral-900 -mx-4"
+      className="relative group overflow-hidden z-[2] flex flex-row shadow-inner shadow-neutral-800 p-4 rounded-lg border border-neutral-900 -mx-4 transition-colors hover:transition-none hover:bg-neutral-900"
     >
       <div className="flex-1">
         <div className="flex justify-between">

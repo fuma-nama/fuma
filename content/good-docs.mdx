@@ -1,0 +1,105 @@
+---
+title: How to write a good docs
+description: A guide to write a good documentation
+date: 2024-07-06
+---
+
+## How to write a good docs
+
+Writing documentation is difficult, exhausting, and often time-consuming.
+Maintaining a docs can be also challenging.
+Since the documentation itself isn't the top prirority of a product or library, we don't have too much time to maintain the docs.
+Writing a good documentation is not as simple as it sounds, it can be a strenuous job as your project grows.
+
+### Learn from Feedback
+
+As a non-native English speaker, it's extremely hard to explain a complex idea or an abstract concept even in my native language.
+I'm also learning from user feedback and suggestions to improve my content.
+
+You can **provide a way for readers to leave feedback and suggestions to the docs**.
+With these suggestions, you can address the problems in your content sooner and easier.
+
+### Syntax
+
+Markdown (especially GFM) is a common format for docs.
+You can leverage it to create a better experience for readers:
+
+- **Use Lists to express key points:** Instead of using English connectives, list might be a better choice to express key points.
+
+- **Use Tables:** Table is one of the most useful feature of GFM, you can use them to express different things like conditions, and properties. This is particularly powerful to avoid having a lot of 'if's to describe complex conditions.
+
+| Time       | Behaviour    |
+| ---------- | ------------ |
+| Work       | Procrasinate |
+| After Work | Watch anime  |
+
+- **More Headings:** With anchors, people can easily link to a heading. Sometimes instead of Ordered List, using headings to show your steps may more readable.
+- **Use Bold for skimming optimization:** People are _lazy_, so do I. Most of us will skim through the content instead of reading a long paragraph, you can use bold `**text**` to emphasize important sentiments.
+- **For technical docs, use code blocks over text:** As developers, we usually read code faster than text. Especially for code examples, a code block and some explanations in code comments are enough.
+  You only need further explanations to more sophisticated examples like algorithm implementations.
+- **Diagrams:** It is the best way to showcase the architecture or principles of a system. I personally use Figma and display diagrams with images, you can pick a way you like to design diagrams.
+- **Don't use Ordered List for steps:** People read from top to bottom, adding the number of step is unnecessary. It doesn't change how we read the content. Instead, you should give each step a meaningful heading.
+- **Use Hyperlink:** When mentioning a name (e.g. Fumadocs), you can link the relevant URL with hyperlinks.
+
+### Writing Style
+
+When reading blog posts, people love poetic and beautiful wording. It gives a different vibe to readers and make the article vibrant.
+However, **most docs readers are not native English speakers**, especially the readers of programming framework and library documentations.
+Most importantly, _you really don't need fancy wordings for a docs_.
+
+You should use:
+
+- **Simple words:** Use a simple and accurate word rather its advanced synonyms, so that everyone can understand the content without a dictionary on hand.
+- **No Redundant Decorations:** Remove all redunant words like 'you can', 'you may try' or 'please', you can elegantly remove them to leave the precious space for something else.
+
+  | Before                                              | After                                       |
+  | --------------------------------------------------- | ------------------------------------------- |
+  | Please don't put this to A                          | Don't put this to A                         |
+  | You can configure the library                       | Configure the library                       |
+  | If it doesn't work, you may update the dependencies | If it doesn't work, update the dependencies |
+  | Personally, I would recommend to use A              | It's recommended to use A                   |
+  | To enable B, you can configure C                    | To enable B, configure C                    |
+
+- **Subject First:** Use a simple grammar structure, place your subject in the beginner of sentences. It saves time for readers to understand the meaning, which also optimize our skimming experience.
+
+  | Before                                                            | After                                                                |
+  | ----------------------------------------------------------------- | -------------------------------------------------------------------- |
+  | One of the documentation framework, Fumadocs, is becoming popular | Fumadocs is a documentation framework, it is becoming popular.       |
+  | Moreover, as a web framework, Next.js is useful for React.js apps | Next.js is a web framework that is useful for building React.js apps |
+  | You can configure C to enable B                                   | To enable B, configure C                                             |
+
+- **No long paragraphs:** A long paragraph can usually be separated into multiple paragraphs.
+  Generally, we recommend each line contain at most 10-12 words, and each paragraph no longer than 9 lines.
+  Giving each paragraph a heading also help to build a better reading experience when skimming through the content.
+
+  | Before                                                         | After                                                                                                       |
+  | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+  | Next.js is ...<br/>Fumadocs is based on Next.js, it offers ... | ## What is Next.js?<br/>Next.js is ...<br/><br/>## Fumadocs<br/>Fumadocs is based on Next.js, it offers ... |
+
+- **Avoid 'first... then...':** Same as the _Ordered List_ rule. You don't need sequencers to show the steps, since people read from top to bottom. Instead, give each step a meaningful heading.
+
+### Pages Organization
+
+Organizing pages and navigation elements can be more important than your content. Browsing a site also **include navigating between pages**.
+No matter what documentation framework you choose, you should provide **Document Search**, and a navigation element like **Sidebar**.
+
+As you make changes to the library/product, your content may become out-of-date or incorrect.
+A better organization of pages can mitigate the problem, and reduce efforts to maintain the content.
+
+- **Dedicated Page:** Create a dedicated page for something, for example, put all information about caching to a page. Whenever you make changes to the caching behaviours, you can edit only that page to ensure the content is up-to-date.
+- **No Duplicated Page:** Avoid having multiple pages with the similar purposes, for example, _QuickStart_ and _Introduction_ can usually be organized into one page.
+- **Learning Curve:** When reading something, context matters. You should order the pages in a way that beginners can easily begin with, build the correct context, and reveal complexity as people read/learn deeper.
+
+[Leerob's blog post](https://leerob.io/blog/developer-experience#documentation) also gave great suggestions about this.
+
+### Page Organization
+
+Since most education includes writing, I assume you can organize different sections/headings, and paragraphs correctly.
+
+Deciding what to put into a page can also be difficult:
+
+- **Acronyms:** Don't expect readers know all acronyms, at least spell it the first time. You can add a dedicated page for the terminologies and acronyms used in your docs.
+- **FAQ Section:** Most readers come to a docs to solve their problems (e.g. how to use something, or to fix a bug). A FAQ section that answers questions is helpful for these readers, especially about bug fixes and hacky workarounds.
+- **No Duplicated Content:** Avoid having duplicated content in multiple pages, for example, mentioning the same caching behaviour in many pages. When you make changes to the caching behaviours, duplicated content increases the amount of content you need to update.
+- **Automuated Documentation:** Generate docs from the "source of truth" (e.g. code and OpenAPI Schema), this can highly reduce the difficulty to maintain a docs. Like [Fumadocs](https://fumadocs.vercel.app) generates code examples from the source code of example apps.
+- **Deep Dive Section:** As Leerob mentioned, we shouldn't only mention the 'happy path'. Put content that's helpful for debugging or dedicated to experts in (collapsible) deep dive sections, like explaing how the thing works.

@@ -28,21 +28,23 @@ function MDXLink({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   return <Link href={href} {...props} />;
 }
 
+const headingTypes = ["h1", "h2", "h3", "h4", "h5", "h6"] as const;
+
 function Heading({
   as: As,
   ...props
-}: { as: string } & HTMLAttributes<HTMLHeadingElement>) {
-  return (
-    <a
-      href={props.id ? `#${props.id}` : undefined}
-      className="relative group no-underline"
-    >
-      <span className="absolute -left-5 text-neutral-500 text-base h-full content-center opacity-0 transition-opacity group-hover:opacity-100">
+}: { as: (typeof headingTypes)[number] } & HTMLAttributes<HTMLHeadingElement>) {
+  const inner = (
+    <As {...props} className="group inline-flex items-center no-underline">
+      <span className="absolute -ml-4 text-neutral-500 text-base opacity-0 transition-opacity group-hover:opacity-100">
         #
       </span>
-      <As {...props}>{props.children}</As>
-    </a>
+      {props.children}
+    </As>
   );
+
+  if (props.id) return <a href={`#${props.id}`}>{inner}</a>;
+  return inner;
 }
 
 export default function Page({ params }: { params: { id: string } }) {
@@ -56,7 +58,7 @@ export default function Page({ params }: { params: { id: string } }) {
           components={{
             a: MDXLink,
             ...Object.fromEntries(
-              ["h1", "h2", "h3", "h4", "h5", "h6"].map((type) => [
+              headingTypes.map((type) => [
                 type,
                 (props: HTMLAttributes<HTMLHeadingElement>) => (
                   <Heading as={type} {...props} />

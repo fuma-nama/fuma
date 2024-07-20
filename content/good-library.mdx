@@ -25,11 +25,11 @@ When doing so, write comments on these codes so that beginners can understand ho
 
 We usually navigate in a codebase with **files** and **functions**, a huge function or file takes more time for us to comprehend and potentially find its bugs.
 
-- A function should never contain 300+ lines of code without an explanation/comment.
-- A file should never contain 2000+ lines of code.
+- **A function should never contain 300+ lines of code** without an explanation/comment.
+- **A file should never contain 2000+ lines of code.**
   In my experience, most of these huge files can be separated into multiple files.
   File navigation is often useful when we want to find the relevant code for a specific feature.
-- A loop (e.g. if) should never contain 300+ lines of code, they are generally hard to read.
+- **A loop (e.g. if) should never contain 300+ lines of code**, they are generally hard to read.
 
 We create a separate function when:
 
@@ -72,9 +72,27 @@ Although I won't say it's a satisfying experience (especially when you see the c
 
 Remember to specify the workflow of contributing, for example:
 
-- Run Lint.
+- Lint.
 - Run tests and update test snapshots if necessary.
 - For new features, submit a feature request first.
 - For bug fixes, submit a bug report first.
 
 In this way, you can also ensure the standard quality of submitted PRs.
+
+### CI/CD Pipelines
+
+Automate some processes like _running unit tests on PRs_ with GitHub Actions or other pipelines.
+
+Save time to focus on the actual functionalties.
+
+### Manage
+
+In general, a large codebase will have a group of core maintainers.
+To collaborate, they will use a (project planning) software to share tasks and roadmap.
+
+You can always choose a software like [Linear](https://linear.app), which the Next.js team uses.
+Large projects can have hundreds of issues on GitHub easily, these software can help you to build the workflow for maintainers to manage them.
+
+Since I currently don't own any large open-source projects, I just use Notion to manage my work.
+
+Also, make sure to leverage the features of GitHub (or the platform you use), like **Issue Labels** can classify the area, priority and type of the issue.

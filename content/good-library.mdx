@@ -1,0 +1,80 @@
+---
+title: How to build a good open-source framework/library
+description: Some experience I've learned as a dev
+date: 2024-07-20
+---
+
+## DX is Everything
+
+The lifespan of a framework hugely depends on the experience of working in the codebase.
+For open-source projects, the difficulty of contributing can change people's willingness to become contributors.
+
+All contributors must understand how the codebase works, which is arduous for massive codebases.
+That's why, the **readability** and **maintainability** of code often matter.
+
+### Codebase
+
+A good framework should have a good codebase.
+
+#### Comment hacky workarounds
+
+It's common to encounter some tricky problems, we often make hacky workarounds to "fix" them.
+When doing so, write comments on these codes so that beginners can understand how it works.
+
+#### Code Navigation
+
+We usually navigate in a codebase with **files** and **functions**, a huge function or file takes more time for us to comprehend and potentially find its bugs.
+
+- A function should never contain 300+ lines of code without an explanation/comment.
+- A file should never contain 2000+ lines of code.
+  In my experience, most of these huge files can be separated into multiple files.
+  File navigation is often useful when we want to find the relevant code for a specific feature.
+- A loop (e.g. if) should never contain 300+ lines of code, they are generally hard to read.
+
+We create a separate function when:
+
+- The code is reused
+- The function/loop is too long
+- Easier to write unit tests
+
+We create a file when:
+
+- To contain multiple single-purposed functions for a specific feature.
+- For tree-shaking purposes (i.e. the implementation of a client-side utility, or a React.js hook).
+
+### Fewer Features
+
+Add features only if you can maintain them.
+
+For every feature, you have to carry them on the codebase even when you deprecated them.
+You will need to make a **major** release to remove them once you decide to support them.
+
+```
+Announced (Minor Release) -> Documented -> Deprecated -> Removed (Major Release)
+```
+
+Sometimes, it makes sense to sacrifice functionalities and flexibility for the maintainability of your project.
+
+### Deprecate Features
+
+Deprecate and remove legacy features.
+
+It is a nice experience to update a library without changing the code, but it shouldn't be the case for major releases.
+**The codebase will be bloated** if you decide to keep all deprecated features and options.
+
+### Documentation for Contributors
+
+We generally write docs for the users - people who use the framework.
+However, for massive codebases, it's also important to write guides for the contributors to begin with.
+
+For example, Next.js has a minimal guide to get started with contributing.
+Although I won't say it's a satisfying experience (especially when you see the complexity of `next` itself), it is indeed helpful to me.
+
+Remember to specify the workflow of contributing, for example:
+
+- Run Lint.
+- Run tests and update test snapshots if necessary.
+- For new features, submit a feature request first.
+- For bug fixes, submit a bug report first.
+
+In this way, you can also ensure the standard quality of submitted PRs.

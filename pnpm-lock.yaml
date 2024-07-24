@@ -12,14 +12,14 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1(@prisma/client@5.17.0(prisma@5.17.0))
       '@fuma-comment/next':
-        specifier: ^0.4.0
-        version: 0.4.0(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        specifier: ^0.5.0
+        version: 0.5.0(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@fuma-comment/prisma-adapter':
         specifier: ^0.4.0
         version: 0.4.0(prisma@5.17.0)
       '@fuma-comment/react':
-        specifier: ^0.4.2
-        version: 0.4.2(@tiptap/core@2.5.5(@tiptap/pm@2.5.5))(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^0.5.0
+        version: 0.5.0(@tiptap/core@2.5.5(@tiptap/pm@2.5.5))(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@fuma-content/next':
         specifier: ^0.0.2
         version: 0.0.2(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -157,22 +157,22 @@ packages:
   '@floating-ui/utils@0.2.5':
     resolution: {integrity: sha512-sTcG+QZ6fdEUObICavU+aB3Mp8HY4n14wYHdxK4fXjPmv3PXZZeY5RaguJmGyeH/CJQhX3fqKUtS4qc1LoHwhQ==}
 
-  '@fuma-comment/next@0.4.0':
-    resolution: {integrity: sha512-pf9bZQQMG3K6RWvcvRtnzpjKoy5IdcVPCJE+Mp3q32SfnqGv+VkItwIoYow5jsielVUpBNR7djcGj7RbP4S0Zw==}
+  '@fuma-comment/next@0.5.0':
+    resolution: {integrity: sha512-K91R+4C36ubLyX4hJUpe9VQYyGEkalYKsS/77Gg5XiFmdYFrVY7QffySKhDHZOTYNAe1vw34Peoxs0TC4a3SNQ==}
     peerDependencies:
       next: '>= 13.4'
 
   '@fuma-comment/prisma-adapter@0.4.0':
     resolution: {integrity: sha512-XRzyrpPwdOJDBO3XPRhNtDghOHwuCkTbqI+t1JfonyWJRsecjuYUgQccih6gUDPgFlod7KVFV6Xcg0Jwl2SN1g==}
 
-  '@fuma-comment/react@0.4.2':
-    resolution: {integrity: sha512-fNbCG5XGZ2L17RpLdtcO+yuQTjwMKqQC/rqNeYhiz3jvBrA6vguAjDQtuBm2eq20BRjt4xEk4cY3N7KbD6W7tQ==}
+  '@fuma-comment/react@0.5.0':
+    resolution: {integrity: sha512-zbzwf0SZqHo4/xtcuRUzjIy55RFpB2JURZRycjmwIv3pmWuDAWmMQ4zn1pRFVGgMFQG+j/eLHE7X70n5CEOc2w==}
     peerDependencies:
       react: ^18.x
       react-dom: ^18.x
 
-  '@fuma-comment/server@0.4.0':
-    resolution: {integrity: sha512-ApkewKcpczmss4YCAI6NZXa4JImf1ZLzDpIkNFo6KnfNPeF1LQ64ARN/+qD5VyS8O4VHyiL0XkanQNcux7OSKg==}
+  '@fuma-comment/server@0.5.0':
+    resolution: {integrity: sha512-Z1PYD1LbZJfHa5DC9/l2kg27MxGeUltnmfp1dcEyARbzk/3x67MVV72euxmzVJruIn/nb2+QttN/3s/+ew2kZA==}
 
   '@fuma-content/next@0.0.2':
     resolution: {integrity: sha512-Hg7hTmRvMcmRBhPwP7q3dym7a9khwTfiwgmimCDIwzaXSGnqWLAD5ty5kPK0/AwhGZRQVkwMKEUXXSiSdQQdbQ==}
@@ -2123,9 +2123,9 @@ snapshots:
 
   '@floating-ui/utils@0.2.5': {}
 
-  '@fuma-comment/next@0.4.0(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
+  '@fuma-comment/next@0.5.0(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
     dependencies:
-      '@fuma-comment/server': 0.4.0
+      '@fuma-comment/server': 0.5.0
       next: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   '@fuma-comment/prisma-adapter@0.4.0(prisma@5.17.0)':
@@ -2134,7 +2134,7 @@ snapshots:
     transitivePeerDependencies:
       - prisma
 
-  '@fuma-comment/react@0.4.2(@tiptap/core@2.5.5(@tiptap/pm@2.5.5))(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@fuma-comment/react@0.5.0(@tiptap/core@2.5.5(@tiptap/pm@2.5.5))(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/react-collapsible': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-dialog': 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2165,7 +2165,7 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
-  '@fuma-comment/server@0.4.0':
+  '@fuma-comment/server@0.5.0':
     dependencies:
       zod: 3.23.8
 

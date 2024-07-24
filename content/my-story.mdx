@@ -1,0 +1,169 @@
+---
+title: My Developer Story
+description: How I started my coding journey
+date: 2024-07-23
+---
+
+import LiteYouTubeEmbed from "@/components/youtube";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+
+## My Developer Story
+
+The beginning of my coding journey was like a rollercoaster.
+
+### A Gamer
+
+Under the information age, I was born in a normal family in Hong Kong.
+My family bought a computer when I was around 6 years ago.
+
+At the start, I wander on the World Wide Web like an ordinary teenager.
+Everything was completely new to me, I didn't have to muster the will to try something new.
+
+IOs Games were quite popular back in time, I still remember I was having a lot of fun playing **moomoo.io** all day.
+To _"have more fun"_, I learned to use scripts downloaded from **Tampermonkey**, and managed to do some "hacks" using these scripts.
+
+By coincidence, it was the first time I reached the boundary of programming, although I didn't get into it.
+The 6 years old me gave up on trying to understand the script written in **JavaScript** (I didn't even know what a programming language is).
+Coercing my brain to understand them apparently won't make me another **Linus Torvalds** or a genius computer nerd.
+
+I cannot recall much about what I did on the Internet back in my childhood, but I was able to feel the vibrant world of computer.
+Looking backward, this probably built my fundamentals as a developer.
+
+### Primary School
+
+During my primary school, around P.5, I was a big fan of **Sandbox games**.
+A wonderful way to hang out online, and most importantly, have no stress and concept of rankings.
+
+Back in the day, one sandbox game I was playing called **Ultimate Sandbox**, had became a target of game modding (aka. hacking).
+In the 1.9.9 version, there were lots of hackers using the modded version of the game downloaded online.
+
+I had no concept about game modding and using hacks, literally a shameless kid.
+
+I soon realised the fun of playing with these hacks, and became one of them.
+Upon testing my new downloaded hacks, somebody joined the chat room and sent a few suspicious download links.
+It turns out to be a fancy hack **XMOD** modded by somebody called **Godzhacker**.
+The mod was super powerful, with lots of different features that brought even more surprises than the boring game.
+
+The mod itself also comes with a **backdoor** that allows the modder (Godzhacker) to ban mod users forever, meaning that people who use XMOD can be banned from using the mod.
+Banned users can no longer open the game, it was almost impossible to bypass that.
+With my previous Chinese friends, we tackled the problem by deleting a file hidden under the app directory.
+
+I was wondering that if I somehow modified the mod, perhaps I could also ban the other users.
+Reaching out to a game modder, he told me he was using **Dnspy**, a software that decompiles .DLL files to mod Unity games. (Note: This method is no longer useful due to IL2CPP).
+
+Under immense testing, I successfully found the correct file `Assembly-CSharp.dll` and learned to mod Unity games without _any tutorials_.
+I had no knowledge about C#, the decompiled programming language.
+And I learned it by observing the code, change it, then observe the changes.
+
+This strategy worked very well, I made my first mod based on XMOD.
+Predictably, after playing with my mods, I felt unsatisfied and wanted to do something cooler, like adding new weapons.
+
+### Reverse Engineering
+
+It took me another year, trying to unpack the entire APK back to an Unity project.
+In my primary school, I was an immoral, unintelligent, shameless student, so I relied and pirated the tools online.
+
+**It was a great success** using DevX-Unpacker, after replacing the broken C# scripts with decompiled DLL files from Dnspy, I got the original working Unity project.
+I learned to use Unity like an ordinary Game Developer, with the former code written by the developer of the game, I added a few weapons, vehicles and skins.
+
+Lacking the required software and relevent knowledge, I used the **marketplace** of Untiy and added a few maps to the game itself.
+
+<LiteYouTubeEmbed id="zqW7WAH81OU" title="Game Demo" />
+
+From modeling to rigging, I stepped into the world of game development.
+
+### Game Developer
+
+My Game Developer career was extremely short-living, because I realized it's incredibly tough and difficult.
+I was totally unqualified as somebody with zero fundamentals, my calibre as a game developer was too low.
+
+I tried UE4, learned some C++ which isn't hard as a C# dev + game modder.
+As an experimental project, I made a little car racing game with Blender + UE4.
+Things are working, and I've also felt the heavy work and efforts to make a game.
+
+Unfortunately, I didn't become an expert in the intricacies of game development.
+Perhaps it isn't a suitable path for me.
+
+### Back to Coding
+
+I start to feel interested to write some code.
+
+The first thing I made is a C# WinForm app, Windows was my primary OS and their developer toolkit had provided everything I need.
+
+![app](/markup-studio.png)
+
+Lately, I developed a few UWP (Universal Windows Platform) apps but have no idea what to build next.
+
+### Picked up Java
+
+I was scrolling StackOverflow, and discovered a programming language that looks so close to C#.
+It is **Java**, a popular programming language.
+
+I didn't even spend time learning C# and other programming languages, as I thought I've mastered them by just reading and modifying the code.
+So I started to **take coding seriously**, learning from the basics of Java.
+Meanwhile, I made backend projects with Spring Boot, learned to open source my projects on GitHub.
+
+Java was so wide-used that I made **Android apps**, **web services**, **Discord bots**, and backends with purely Java.
+Probably influenced by JetBrains, the company that makes my favourite Java IDE Intellij, I also learned Kotlin and immediately caught by its beautiful and elegant syntax.
+
+### Libraries
+
+I published a few libraries written in Kotlin.
+
+- [JDAK](https://github.com/fuma-nama/jdak), a framework for Discord Bot application commands (for JDA).
+- [Discord UI](https://github.com/fuma-nama/discord-ui), a library to render and handle states of Discord Message Components (for JDA).
+- [BJDA](https://github.com/fuma-nama/B-JDA), a wrapper of JDA with powerful functionalities like message components (for JDA).
+
+### Minecraft Mods
+
+An idea jumped into my mind, how about Minecraft mods?
+
+Minecraft Forge lacks of a comprehensive documentation about game modding because most types information were decompiled from JAR files.
+They were no longer human readable.
+I tried to develop [Mine UI](https://github.com/fuma-nama/mine-ui), a mod that implements some common UI components.
+However, I stopped the project as I lost my interest to continue the development.
+
+### Web Development
+
+To practice my Java skills, I wanted to build a chat app.
+It was around **2017**, I wasn't familiar with Web Development so I picked Java Swing for the frontend.
+
+The project is open sourced, you can find the repository on [GitHub](https://github.com/fuma-nama/U3-Client).
+
+Months later, I learned JavaScript, adopted new technologies including React.js and Vite.
+[Omagize](https://github.com/fuma-nama/omagize) was developed as a successor to U3, my previous Java chat app.
+The app uses a backend written in Kotlin, and the frontend is completely developed in Typescript.
+It has a more eye-catching, impressive UI which was difficult to make in Java Swing.
+
+I felt how convenient and universal the tech stack is.
+TypeScript could literally be used everywhere, even in a place that it doesn't belong to.
+
+I swifted my focus to Web Development, developing my Discord bot dashboard templates on GitHub and gained some followers.
+It was also the period of time I learned Next.js, Vue.js and many other useful things.
+
+My [video demo](https://youtu.be/Z90Ax-v4uH4) of the dashboard was also a success.
+
+<LiteYouTubeEmbed id="Z90Ax-v4uH4" title="Discord Bot Dashboard" />
+
+By then, I met [Yeecord](https://yeecord.com) in 2023, a Discord bot developed by a Taiwan student.
+It was my first time to contribute to an open source project, I migrated their docs site to **Nextra**.
+(Although it is now using my Fumadocs)
+
+I developed my frontend skills very fast, almost all my time goes into my web development side projects.
+**Shark Chat** was developed as a successor to Omagize, leveraging Cloud services to ameliorate the problem of slow respond, due to the lack of performance optimizations of Omagize.
+
+**Omagize** has a backend developed in Kotlin, the implementation of realtime notification system was rough and poorly designed.
+It was just a centralized WebSocket server between clients which can be buggy under poor internet connection.
+The backend was no longer hosted as the project ends in 2023.
+
+[Shark Chat](https://shark-chat.vercel.app) is still available on Web, with [a repository on GitHub](https://github.com/fuma-nama/shark-chat-js).
+
+### Now
+
+Today is 2024, I made [Fuma Comment](https://fuma-comment.vercel.app), [Fumadocs](https://github.com/fuma-nama/fumadocs), and many other projects.
+They are all my treasures, I've spent immense time to make them better.
+
+Fumadocs has reached 1,000 stars on GitHub in 2024, July 23. A very great achievement to me.
+Vercel sent me some cool Next.js swags, I really love the nice water bottle. ;)
+
+What is next? Perhaps I'll contribute to more open-source projects.

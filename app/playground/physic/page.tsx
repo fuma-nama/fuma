@@ -15,7 +15,7 @@ export default function Page() {
     return () => {
       renderer();
     };
-  });
+  }, []);
 
   return (
     <>
@@ -29,13 +29,32 @@ export default function Page() {
 
 function createRenderer({ canvas }: { canvas: HTMLCanvasElement }) {
   let unmounted = false;
-  let angle = (2.5 * Math.PI) / 2;
-  let speed = 20;
+  let speedX = 1.2,
+    speedY = -2;
   let x = 100,
     y = 100,
-    d = 100;
+    r = 50;
+  let mouseX = -1,
+    mouseY = -1;
   const ctx = canvas.getContext("2d")!;
 
+  function onMouseMove(event: MouseEvent) {
+    const rect = canvas.getBoundingClientRect();
+    if (
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom
+    ) {
+      mouseX = -1;
+      mouseY = -1;
+    } else {
+      mouseX = event.clientX - rect.left;
+      mouseY = event.clientY - rect.top;
+    }
+  }
+
+  let lastRender = Date.now();
   function render() {
     if (unmounted) return;
 
@@ -50,38 +69,58 @@ function createRenderer({ canvas }: { canvas: HTMLCanvasElement }) {
 
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 
-    // prevent it exceeds 360
-    angle %= 2 * Math.PI;
-    x = speed * Math.cos(angle) + x;
-    y = -speed * Math.sin(angle) + y;
+    // Assume 1m = 10px
+    x = speedX * 10 + x;
+    y = speedY * 10 + y;
 
+    if (y < 0 || y + 2 * r >= canvas.clientHeight) {
+      speedY = Math.abs(speedY) >= 0.1 ? -speedY * 0.5 : 0;
+    }
+
+    if (x < 0 || x + 2 * r >= canvas.clientWidth) {
+      speedX = Math.abs(speedX) >= 0.12 ? -speedX * 0.5 : 0;
+    }
+
+    const now = Date.now();
+    const dt = (now - lastRender) / 1000;
+
+    if (mouseX === -1 && mouseY === -1) {
+      // return to natural gravity
+      speedY += 9.81 * dt;
+    } else {
+      const dx = canvas.clientWidth / 2 - mouseX;
+      const dy = canvas.clientHeight / 2 - mouseY;
+      const d = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+
+      speedX += 9.81 * (dx / d) * dt;
+      speedY += 9.81 * (dy / d) * dt;
+
+      ctx.filter = "blur(24px)";
+      ctx.beginPath();
+      ctx.arc(mouseX, mouseY, 30, 0, 2 * Math.PI);
+      ctx.fillStyle = "rgb(200,225,255)";
+      ctx.fill();
+    }
+
+    lastRender = now;
+
+    x = Math.min(Math.max(x, 0), canvas.clientWidth - 2 * r);
+    y = Math.min(Math.max(y, 0), canvas.clientHeight - 2 * r);
+
+    ctx.filter = "none";
     ctx.beginPath();
-    ctx.arc(x + d / 2, y + d / 2, d / 2, 0, 2 * Math.PI);
+    ctx.arc(x + r, y + r, r, 0, 2 * Math.PI);
     ctx.fillStyle = "white";
     ctx.fill();
-
-    if (y < 0 || y + d > canvas.clientHeight) {
-      let d = Math.asin(Math.sin(angle));
-      angle =
-        angle < Math.PI / 2 || angle > (3 * Math.PI) / 2
-          ? 2 * Math.PI - d
-          : Math.PI + d;
-    }
-
-    if (x < 0 || x + d > canvas.clientWidth) {
-      let d = Math.acos(Math.cos(angle));
-      angle = angle < Math.PI ? Math.PI - d : Math.PI + d;
-    }
-
-    x = Math.min(Math.max(x, 0), canvas.clientWidth - d);
-    y = Math.min(Math.max(y, 0), canvas.clientHeight - d);
 
     requestAnimationFrame(() => render());
   }
 
   render();
+  document.addEventListener("mousemove", onMouseMove);
 
   return () => {
+    document.removeEventListener("mousemove", onMouseMove);
     unmounted = true;
   };
 }

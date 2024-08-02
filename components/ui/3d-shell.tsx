@@ -31,7 +31,7 @@ export function Shell({
       circle at
       ${centerX * 2 + bounds.width / 2}px
       ${centerY * 2 + bounds.height / 2}px,
-      rgba(255,205,255,0.1),
+      rgba(145,145,185,0.3),
       transparent 50%)`
       );
       box.style.setProperty(
@@ -63,7 +63,7 @@ export function Shell({
     <div
       ref={boxRef}
       className={cn(
-        "relative w-[94vw] h-[400px] max-w-[800px] bg-neutral-600/40 backdrop-blur-3xl rounded-3xl overflow-hidden shadow-xl shadow-neutral-950/50 animate-shell-show",
+        "relative w-[94vw] h-[400px] max-w-[800px] bg-neutral-600/30 backdrop-blur-2xl rounded-3xl overflow-hidden shadow-xl shadow-neutral-950/50 animate-shell-show",
         className
       )}
       {...props}
@@ -72,7 +72,7 @@ export function Shell({
         className="absolute inset-0 rounded-[inherit] pointer-events-none select-none z-[2]"
         style={{
           boxShadow:
-            "inset 0 2px 8px rgba(255,235,235, 0.5), inset 0 -1px 10px rgba(160,160,160, 0.3)",
+            "inset 0 2px 8px rgba(205,185,235, 0.4), inset 0 -1px 10px rgba(100,120,120, 0.3)",
         }}
       />
       {children}

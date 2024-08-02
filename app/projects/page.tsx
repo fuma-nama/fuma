@@ -176,7 +176,7 @@ function Project(project: ProjectProps) {
   return (
     <a
       href={project.href}
-      className="group px-4 py-3 -mx-4 rounded-xl text-neutral-400 transition-colors hover:bg-neutral-900 hover:text-neutral-200"
+      className="group px-4 py-3 -mx-4 rounded-xl text-neutral-400 transition-colors hover:bg-neutral-900 hover:text-neutral-200 hover:transition-none"
       rel="noreferrer noopener"
     >
       <p className="text-sm text-neutral-100 font-medium">{project.name}</p>

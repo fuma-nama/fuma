@@ -18,6 +18,7 @@ export function Nav() {
         />
       </Link>
       <NavLink href="/projects">Projects</NavLink>
+      <NavLink href="/playground">Playground</NavLink>
       <NavLink href="/blog">Blog</NavLink>
     </nav>
   );

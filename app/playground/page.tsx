@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 
 const apps = [
@@ -9,7 +8,7 @@ const apps = [
     url: "/playground/webgl",
   },
   {
-    name: "UI Demo",
+    name: "Anime",
     url: "/playground/demo",
   },
   {
@@ -29,15 +28,14 @@ export default function Page() {
         <Link
           key={app.name}
           href={app.url}
-          className="text-sm flex text-center justify-center items-center gap-4 rounded-full bg-neutral-800/50 backdrop-blur-md group size-24 font-medium text-neutral-100 transition-colors hover:bg-neutral-400/50"
+          className="text-sm flex text-center justify-center items-center gap-4 rounded-full backdrop-blur-md size-24 font-medium text-neutral-100 transition-colors hover:bg-neutral-400"
+          style={{
+            backgroundImage:
+              "linear-gradient(to top right, pink, rgb(155 0 255 / 0.5), transparent 80%), radial-gradient(circle at center, rgb(38 48 48 / 0.5) 40%, rgba(255,255,255, 0.5))",
+            backgroundBlendMode: "overlay, normal",
+          }}
         >
-          <span
-            style={{
-              filter: "drop-shadow(0 2px 6px rgb(0 0 0))",
-            }}
-          >
-            {app.name}
-          </span>
+          {app.name}
         </Link>
       ))}
     </div>

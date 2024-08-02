@@ -69,31 +69,36 @@ function createRenderer({ canvas }: { canvas: HTMLCanvasElement }) {
 
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 
-    // Assume 1m = 10px
-    x = speedX * 10 + x;
-    y = speedY * 10 + y;
-
-    if (y < 0 || y + 2 * r >= canvas.clientHeight) {
-      speedY = Math.abs(speedY) >= 0.1 ? -speedY * 0.5 : 0;
-    }
-
-    if (x < 0 || x + 2 * r >= canvas.clientWidth) {
-      speedX = Math.abs(speedX) >= 0.12 ? -speedX * 0.5 : 0;
-    }
-
     const now = Date.now();
     const dt = (now - lastRender) / 1000;
 
+    if (
+      (x <= 0 && speedX < 0) ||
+      (x + 2 * r >= canvas.clientWidth && speedX > 0)
+    ) {
+      speedX = Math.abs(speedX) >= 1 ? -speedX * 0.5 : 0;
+    }
+
+    if (
+      (y <= 0 && speedY < 0) ||
+      (y + 2 * r >= canvas.clientHeight && speedY > 0)
+    ) {
+      speedY = Math.abs(speedY) >= 1 ? -speedY * 0.5 : 0;
+    }
+
     if (mouseX === -1 && mouseY === -1) {
       // return to natural gravity
-      speedY += 9.81 * dt;
+      if (y + 2 * r < canvas.clientHeight) speedY += 9.81 * dt;
     } else {
       const dx = canvas.clientWidth / 2 - mouseX;
       const dy = canvas.clientHeight / 2 - mouseY;
       const d = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
 
-      speedX += 9.81 * (dx / d) * dt;
-      speedY += 9.81 * (dy / d) * dt;
+      if ((dx > 0 && x + 2 * r < canvas.clientWidth) || (dx < 0 && x > 0))
+        speedX += 9.81 * (dx / d) * dt;
+      if ((dy > 0 && y + 2 * r < canvas.clientHeight) || (dy < 0 && y > 0)) {
+        speedY += 9.81 * (dy / d) * dt;
+      }
 
       ctx.beginPath();
       ctx.arc(mouseX, mouseY, 10, 0, 2 * Math.PI);
@@ -101,8 +106,9 @@ function createRenderer({ canvas }: { canvas: HTMLCanvasElement }) {
       ctx.fill();
     }
 
-    lastRender = now;
-
+    // Assume 1m = 10px
+    x = speedX * 10 + x;
+    y = speedY * 10 + y;
     x = Math.min(Math.max(x, 0), canvas.clientWidth - 2 * r);
     y = Math.min(Math.max(y, 0), canvas.clientHeight - 2 * r);
 
@@ -112,6 +118,7 @@ function createRenderer({ canvas }: { canvas: HTMLCanvasElement }) {
     ctx.fillStyle = "white";
     ctx.fill();
 
+    lastRender = now;
     requestAnimationFrame(() => render());
   }
 

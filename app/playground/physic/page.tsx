@@ -95,9 +95,8 @@ function createRenderer({ canvas }: { canvas: HTMLCanvasElement }) {
       speedX += 9.81 * (dx / d) * dt;
       speedY += 9.81 * (dy / d) * dt;
 
-      ctx.filter = "blur(24px)";
       ctx.beginPath();
-      ctx.arc(mouseX, mouseY, 30, 0, 2 * Math.PI);
+      ctx.arc(mouseX, mouseY, 10, 0, 2 * Math.PI);
       ctx.fillStyle = "rgb(200,225,255)";
       ctx.fill();
     }

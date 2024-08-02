@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 export function Nav() {
   return (
-    <nav className="flex items-center gap-4 mb-4 max-w-[600px] mx-auto">
+    <nav className="flex items-center gap-3 mb-4 max-w-[600px] mx-auto">
       <Link href="/" className="mr-auto">
         <Image
           alt="Me"
@@ -47,7 +47,7 @@ export function NavLink({
       ref={linkRef}
       href={href}
       className={cn(
-        "relative text-neutral-400 transition-colors hover:text-neutral-200",
+        "relative text-neutral-400 text-sm transition-colors hover:text-neutral-200",
         active && "text-neutral-50"
       )}
     >

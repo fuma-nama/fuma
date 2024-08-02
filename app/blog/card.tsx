@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { documents } from "@/app/source";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export function Card({
   id,
@@ -12,7 +12,7 @@ export function Card({
 }) {
   const [date, setDate] = useState("");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setDate(info.date.toLocaleDateString(undefined, { dateStyle: "medium" }));
   }, [info.date]);
 
@@ -22,9 +22,9 @@ export function Card({
       className="relative group overflow-hidden z-[2] flex flex-row shadow-inner shadow-neutral-800 p-4 rounded-lg border border-neutral-900 -mx-4 transition-colors hover:transition-none hover:bg-neutral-900"
     >
       <div className="flex-1">
-        <div className="flex justify-between">
+        <div className="flex flex-row gap-2 justify-between">
           <h2 className="text-sm font-medium mb-2">{info.title}</h2>
-          <span className="text-xs text-neutral-400">{date}</span>
+          <span className="text-xs text-neutral-400 text-nowrap">{date}</span>
         </div>
         <p className="text-xs text-neutral-400">{info.description}</p>
       </div>

@@ -19,6 +19,19 @@ export default function Page() {
           <Card key={d.id} id={d.id} info={d.info} />
         ))}
       </div>
+      <div className="flex flex-row text-sm flex-wrap gap-4 justify-between mt-8">
+        <p className="text-neutral-400">
+          <i>"I know that I know nothing"</i> - Socrates
+        </p>
+        <a
+          href="/rss.xml"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="text-neutral-100 transition-colors hover:text-neutral-300"
+        >
+          RSS
+        </a>
+      </div>
     </main>
   );
 }

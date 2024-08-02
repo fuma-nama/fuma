@@ -26,12 +26,12 @@ export default function Page() {
     <>
       <div className="relative text-center">
         <h1 className="font-medium text-neutral-100">Welcome</h1>
-        <p className="text-sm text-neutral-100/70 mt-2">
+        <p className="text-sm text-neutral-100/80 mt-2">
           Some boring things I've created for fun.
         </p>
-        <div className="absolute z-[-1] inset-0 bg-gradient-to-br from-pink-500 to-purple-500 blur-2xl" />
+        <div className="absolute z-[-1] inset-0 bg-neutral-900 blur-2xl" />
       </div>
-      <div className="flex flex-row gap-8 flex-wrap items-center justify-center mt-6">
+      <div className="grid grid-cols-2 gap-4 mt-6 md:gap-8 md:grid-cols-4">
         {apps.map((app) => (
           <Link
             key={app.name}

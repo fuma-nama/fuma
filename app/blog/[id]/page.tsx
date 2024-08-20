@@ -34,17 +34,19 @@ function Heading({
   as: As,
   ...props
 }: { as: (typeof headingTypes)[number] } & HTMLAttributes<HTMLHeadingElement>) {
-  const inner = (
-    <As {...props} className="group inline-flex items-center no-underline">
-      <span className="absolute -ml-4 text-neutral-500 text-base opacity-0 transition-opacity group-hover:opacity-100">
-        #
-      </span>
-      {props.children}
-    </As>
-  );
+  if (props.id)
+    return (
+      <a href={`#${props.id}`} className="no-underline group">
+        <As {...props}>
+          <span className="absolute -ml-4 mt-0.5 text-neutral-500 text-base opacity-0 transition-opacity group-hover:opacity-100">
+            #
+          </span>
+          {props.children}
+        </As>
+      </a>
+    );
 
-  if (props.id) return <a href={`#${props.id}`}>{inner}</a>;
-  return inner;
+  return <As {...props}>{props.children}</As>;
 }
 
 export default function Page({ params }: { params: { id: string } }) {
@@ -57,6 +59,7 @@ export default function Page({ params }: { params: { id: string } }) {
         <document.renderer
           components={{
             a: MDXLink,
+            img: (props) => <img className="rounded-xl" {...props} />,
             ...Object.fromEntries(
               headingTypes.map((type) => [
                 type,

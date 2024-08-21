@@ -8,7 +8,7 @@ export function CommentsWithAuth({ page }: { page: string }) {
       auth={{
         signIn: () => void signIn("github"),
       }}
-      className="mt-4 -mx-6 sm:-mx-3"
+      className="mt-4 -mx-6 sm:-mx-3 overflow-hidden"
       page={page}
     />
   );

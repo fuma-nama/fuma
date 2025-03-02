@@ -33,6 +33,13 @@ const projects: (ProjectProps & { tag: string })[] = [
   },
   {
     tag: "project",
+    name: "next-validate-link",
+    description:
+      "An utility to validate links in your Markdown files.",
+    href: "https://next-validate-link.vercel.app",
+  },
+  {
+    tag: "project",
     name: "Fuma Content",
     description: "A library for handling content.",
     href: "https://fuma-content.vercel.app",
@@ -56,6 +63,12 @@ const projects: (ProjectProps & { tag: string })[] = [
     name: "No Deploy",
     description: "Robust and scalable hosting platform that supports nothing.",
     href: "https://nodeploy-neon.vercel.app",
+  },
+  {
+    tag: "toy",
+    name: "Shot on Stone",
+    description: "View your photo carved on a stone.",
+    href: "https://shot-on-stone.vercel.app",
   },
   {
     tag: "toy",

@@ -1,40 +1,23 @@
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { NextComment } from "@fuma-comment/next";
-import { createAdapter } from "@fuma-comment/prisma-adapter";
+import { createPrismaAdapter } from "@fuma-comment/server/adapters/prisma";
 
-const adapter = createAdapter({
+const storage = createPrismaAdapter({
   db: prisma,
-  async getUsers(userIds) {
-    const res = await prisma.user.findMany({
-      select: {
-        email: true,
-        name: true,
-        image: true,
-      },
-      where: {
-        email: {
-          in: userIds,
-        },
-      },
-    });
-
-    return res.map((user) => ({
-      id: user.email,
-      image: user.image ?? undefined,
-      name: user.name ?? "Unknown User",
-    }));
-  },
+  auth: 'next-auth'
 });
 
 export const { GET, DELETE, PATCH, POST } = NextComment({
-  adapter,
-  async getSession() {
-    const session = await auth();
-    if (!session?.user?.email) return null;
+  storage,
+  auth: {
+    async getSession() {
+      const session = await auth();
+      if (!session?.user?.email) return null;
 
-    return {
-      id: session.user.email,
-    };
-  },
+      return {
+        id: session.user.email,
+      };
+    },
+  }
 });

@@ -1,5 +1,5 @@
 "use client";
-import { HTMLAttributes, useEffect, useState } from "react";
+import { type HTMLAttributes, useEffect, useState } from "react";
 
 export function Date({
   value,

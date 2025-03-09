@@ -9,9 +9,6 @@ import dynamic from "next/dynamic";
 
 const CommentsWithAuth = dynamic(
   () => import("./comment").then((res) => res.CommentsWithAuth),
-  {
-    ssr: false,
-  }
 );
 
 function MDXLink({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
@@ -49,8 +46,9 @@ function Heading({
   return <As {...props}>{props.children}</As>;
 }
 
-export default function Page({ params }: { params: { id: string } }) {
-  const document = documents.find((d) => d.id === params.id);
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const document = documents.find((d) => d.id === id);
   if (!document) notFound();
 
   return (
@@ -98,7 +96,7 @@ export default function Page({ params }: { params: { id: string } }) {
           Back to blog
         </Link>
       </footer>
-      <CommentsWithAuth page={params.id} />
+      <CommentsWithAuth page={id} />
     </>
   );
 }
@@ -109,8 +107,9 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: { params: { id: string } }) {
-  const document = documents.find((d) => d.id === params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const document = documents.find((d) => d.id === id);
   if (!document) notFound();
 
   return createMetadata({

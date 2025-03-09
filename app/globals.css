@@ -1,6 +1,35 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "@fuma-comment/react/preset.css";
+ 
+/* path of the package relative to the CSS file */
+@source '../node_modules/@fuma-comment/react/dist/**/*.js';
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --animate-shell-show: shell-show 0.2s ease-out;
+
+  @keyframes shell-show {
+    from {
+      transform: scale(0.7);
+      opacity: 0%;
+    }
+    to {
+      transform: scale(1);
+      opacity: 100%;
+    }
+  }
+
+  @keyframes shell-hide {
+    from {
+      transform: scale(1);
+      opacity: "100%",
+    }
+    to {
+      transform: scale(0);
+      opacity: 0%;
+    }
+  }
+}
 
 .hover-card {
   --opacity: 0;

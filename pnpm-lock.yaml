@@ -11,15 +11,12 @@ importers:
       '@auth/prisma-adapter':
         specifier: ^2.8.0
         version: 2.8.0(@prisma/client@6.4.1(prisma@6.4.1(typescript@5.8.2))(typescript@5.8.2))
-      '@fuma-comment/next':
-        specifier: ^1.0.0
-        version: 1.0.0(drizzle-orm@0.40.0(@prisma/client@6.4.1(prisma@6.4.1(typescript@5.8.2))(typescript@5.8.2))(prisma@6.4.1(typescript@5.8.2)))(next-auth@5.0.0-beta.25(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@fuma-comment/react':
-        specifier: ^1.0.0
-        version: 1.0.0(@tiptap/core@2.11.5(@tiptap/pm@2.11.5))(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: ^1.1.0
+        version: 1.1.0(@tiptap/core@2.11.5(@tiptap/pm@2.11.5))(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@fuma-comment/server':
-        specifier: ^1.0.0
-        version: 1.0.0(drizzle-orm@0.40.0(@prisma/client@6.4.1(prisma@6.4.1(typescript@5.8.2))(typescript@5.8.2))(prisma@6.4.1(typescript@5.8.2)))(next-auth@5.0.0-beta.25(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))
+        specifier: ^1.1.0
+        version: 1.1.0(drizzle-orm@0.40.0(@prisma/client@6.4.1(prisma@6.4.1(typescript@5.8.2))(typescript@5.8.2))(prisma@6.4.1(typescript@5.8.2)))(next-auth@5.0.0-beta.25(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@fuma-content/next':
         specifier: ^0.0.2
         version: 0.0.2(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -313,25 +310,29 @@ packages:
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
-  '@fuma-comment/next@1.0.0':
-    resolution: {integrity: sha512-Z9x8vBQYMsehorTWOgcRJ918pzt34jyiGawz2FibIIP1zZuC9BAadcv2qfSLHlR5/yYsBy5/jLmc3IjDer1h2w==}
-    peerDependencies:
-      next: ^14.0.0 || ^15.0.0
-
-  '@fuma-comment/react@1.0.0':
-    resolution: {integrity: sha512-Iz0NdyRaHqKVr4G/qxc968IdGZJ5Rlm0Hn1Mh7c2bAUPKFviiqLEO5h9rgnXF8UTuEje0YU/oiuwlpKwCwoCJQ==}
+  '@fuma-comment/react@1.1.0':
+    resolution: {integrity: sha512-6Xz6fwHb0e/vtGGvNnNs45wQZhHb34nJqXXNG4E5wqa2dXSlkrSfrTU3ge/zFnTCsSTlT77pxh6d61HnEtBElg==}
     peerDependencies:
       react: ^19.x
       react-dom: ^19.x
 
-  '@fuma-comment/server@1.0.0':
-    resolution: {integrity: sha512-Sz28pRP02t06G/u1F1wGeNSd3TDP1qUMA0xbx050iDnDfNywm+t9JfgDwdN4RnWCwF2F+ohzkZuERnfaAHswgQ==}
+  '@fuma-comment/server@1.1.0':
+    resolution: {integrity: sha512-HAnvcYoPrJxCBJ+7EzUhVaPhIgmi5SBQp/NOl3wGwaOFcFaTkQbEBFH/w57Wxk31ynXfQ8lLwL37oxo5urUqLA==}
     peerDependencies:
+      '@clerk/backend': 1.x.x
       better-auth: 1.x.x
       drizzle-orm: ^0.40.0
+      elysia: 1.x.x
+      next: ^14.0.0 || ^15.0.0
       next-auth: 4.x.x
     peerDependenciesMeta:
+      '@clerk/backend':
+        optional: true
       better-auth:
+        optional: true
+      elysia:
+        optional: true
+      next:
         optional: true
       next-auth:
         optional: true
@@ -2543,16 +2544,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.9': {}
 
-  '@fuma-comment/next@1.0.0(drizzle-orm@0.40.0(@prisma/client@6.4.1(prisma@6.4.1(typescript@5.8.2))(typescript@5.8.2))(prisma@6.4.1(typescript@5.8.2)))(next-auth@5.0.0-beta.25(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
-    dependencies:
-      '@fuma-comment/server': 1.0.0(drizzle-orm@0.40.0(@prisma/client@6.4.1(prisma@6.4.1(typescript@5.8.2))(typescript@5.8.2))(prisma@6.4.1(typescript@5.8.2)))(next-auth@5.0.0-beta.25(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))
-      next: 15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-    transitivePeerDependencies:
-      - better-auth
-      - drizzle-orm
-      - next-auth
-
-  '@fuma-comment/react@1.0.0(@tiptap/core@2.11.5(@tiptap/pm@2.11.5))(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@fuma-comment/react@1.1.0(@tiptap/core@2.11.5(@tiptap/pm@2.11.5))(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@radix-ui/react-collapsible': 1.1.3(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@radix-ui/react-dialog': 1.1.6(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -2586,11 +2578,12 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
-  '@fuma-comment/server@1.0.0(drizzle-orm@0.40.0(@prisma/client@6.4.1(prisma@6.4.1(typescript@5.8.2))(typescript@5.8.2))(prisma@6.4.1(typescript@5.8.2)))(next-auth@5.0.0-beta.25(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))':
+  '@fuma-comment/server@1.1.0(drizzle-orm@0.40.0(@prisma/client@6.4.1(prisma@6.4.1(typescript@5.8.2))(typescript@5.8.2))(prisma@6.4.1(typescript@5.8.2)))(next-auth@5.0.0-beta.25(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
       drizzle-orm: 0.40.0(@prisma/client@6.4.1(prisma@6.4.1(typescript@5.8.2))(typescript@5.8.2))(prisma@6.4.1(typescript@5.8.2))
       zod: 3.24.2
     optionalDependencies:
+      next: 15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-auth: 5.0.0-beta.25(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
 
   '@fuma-content/next@0.0.2(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':

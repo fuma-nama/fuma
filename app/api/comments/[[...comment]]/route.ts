@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
-import { NextComment } from "@fuma-comment/next";
+import { NextComment } from "@fuma-comment/server/next";
 import { createPrismaAdapter } from "@fuma-comment/server/adapters/prisma";
 
 const storage = createPrismaAdapter({

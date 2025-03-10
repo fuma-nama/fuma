@@ -13,9 +13,8 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.8.0",
-    "@fuma-comment/next": "^1.0.0",
-    "@fuma-comment/react": "^1.0.0",
-    "@fuma-comment/server": "^1.0.0",
+    "@fuma-comment/react": "^1.1.0",
+    "@fuma-comment/server": "^1.1.0",
     "@fuma-content/next": "^0.0.2",
     "@prisma/client": "^6.4.1",
     "@radix-ui/react-scroll-area": "^1.2.3",

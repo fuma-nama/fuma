@@ -9,8 +9,7 @@ const projects: (ProjectProps & { tag: string })[] = [
   {
     tag: "project",
     name: "Fumadocs",
-    description:
-      "The powerful framework for building documentation sites in Next.js.",
+    description: "The React.js docs framework.",
     href: "https://fumadocs.vercel.app",
   },
   {

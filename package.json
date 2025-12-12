@@ -22,7 +22,7 @@
     "class-variance-authority": "^0.7.1",
     "feed": "^4.2.2",
     "fuma-content": "^0.0.2",
-    "next": "15.2.6",
+    "next": "15.2.8",
     "next-auth": "5.0.0-beta.25",
     "phenomenon": "^1.6.0",
     "react": "^19.0.1",

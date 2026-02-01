@@ -10,7 +10,7 @@ const projects: (ProjectProps & { tag: string })[] = [
     tag: "project",
     name: "Fumadocs",
     description: "The React.js docs framework.",
-    href: "https://fumadocs.vercel.app",
+    href: "https://fumadocs.dev",
   },
   {
     tag: "project",
@@ -33,8 +33,7 @@ const projects: (ProjectProps & { tag: string })[] = [
   {
     tag: "project",
     name: "next-validate-link",
-    description:
-      "An utility to validate links in your Markdown files.",
+    description: "An utility to validate links in your Markdown files.",
     href: "https://next-validate-link.vercel.app",
   },
   {
@@ -46,8 +45,7 @@ const projects: (ProjectProps & { tag: string })[] = [
   {
     tag: "project",
     name: "Discord FP",
-    description:
-      "A Beautiful Application Command Library for Discord.js and Discordeno.",
+    description: "A Beautiful Application Command Library for Discord.js and Discordeno.",
     href: "https://github.com/fuma-nama/discord-fp",
   },
   {
@@ -108,15 +106,13 @@ const projects: (ProjectProps & { tag: string })[] = [
   {
     tag: "legacy",
     name: "JDAK",
-    description:
-      "A fast, flexible command framework for JDA written in Kotlin.",
+    description: "A fast, flexible command framework for JDA written in Kotlin.",
     href: "https://github.com/fuma-nama/jdak",
   },
   {
     tag: "legacy",
     name: "Omagize",
-    description:
-      "A modern and powerful web chat app written in Java & TypeScript.",
+    description: "A modern and powerful web chat app written in Java & TypeScript.",
     href: "https://github.com/fuma-nama/omagize",
   },
   {
@@ -153,9 +149,7 @@ export default function Page() {
       </div>
 
       <h2 className="font-semibold text-lg">Experimental</h2>
-      <p className="text-sm text-neutral-400 mb-2">
-        Bleeding edge stuffs for testing purposes.
-      </p>
+      <p className="text-sm text-neutral-400 mb-2">Bleeding edge stuffs for testing purposes.</p>
       <div className="flex flex-col divide-y divide-neutral-800 mb-6">
         {projects
           .filter((p) => p.tag === "experimental")
@@ -164,9 +158,7 @@ export default function Page() {
           ))}
       </div>
       <h2 className="font-semibold text-lg">Legacy</h2>
-      <p className="text-sm text-neutral-400 mb-2">
-        My neglected, abandoned projects.
-      </p>
+      <p className="text-sm text-neutral-400 mb-2">My neglected, abandoned projects.</p>
       <div className="flex flex-col divide-y divide-neutral-800 mb-6">
         {projects
           .filter((p) => p.tag === "legacy")

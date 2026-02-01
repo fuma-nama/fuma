@@ -40,6 +40,7 @@ We can move node "10" to the next node of "5". A destination of null refers to t
 ```sql
 update item set next_id = <target>.next_id where node.next_id = <target>.id
 ```
+
 3. Update the new predecessor (if exists)
 
 ```sql
@@ -56,11 +57,10 @@ When the users request the list, select all items and construct it dynamically. 
 
 #### Problems
 
-The standard linked list approach seems to be worse for a SQL database, even though we can do all this in a transaction. 
+The standard linked list approach seems to be worse for a SQL database, even though we can do all this in a transaction.
 
 Actually, every movement performs a "remove" and "add" operation.
 More worse, It adds extra cost to delete items from the list.
-
 
 ### Optimized List
 
@@ -93,7 +93,7 @@ As you may notice, indexing the order of items is not needed in our use case, it
 When a item is moved, we receive the full list from client-side:
 
 ```json
-[1,5,2,4,3]
+[1, 5, 2, 4, 3]
 ```
 
 Then we validate the data and store it into the database. When the list is being requested, we construct it dynamically.

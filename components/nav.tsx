@@ -9,13 +9,7 @@ export function Nav() {
   return (
     <nav className="flex items-center gap-3 mb-4 max-w-[600px] mx-auto">
       <Link href="/" className="mr-auto">
-        <Image
-          alt="Me"
-          src="/me.jpg"
-          width="40"
-          height="40"
-          className="size-8 rounded-full"
-        />
+        <Image alt="Me" src="/me.jpg" width="40" height="40" className="size-8 rounded-full" />
       </Link>
       <NavLink href="/projects">Projects</NavLink>
       <NavLink href="/playground">Playground</NavLink>
@@ -24,13 +18,7 @@ export function Nav() {
   );
 }
 
-export function NavLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
+export function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   const pathname = usePathname();
   const active = pathname === href || pathname.startsWith(href + "/");
   const linkRef = useRef<HTMLAnchorElement>(null);
@@ -48,7 +36,7 @@ export function NavLink({
       href={href}
       className={cn(
         "relative text-neutral-400 text-sm transition-colors hover:text-neutral-200",
-        active && "text-neutral-50"
+        active && "text-neutral-50",
       )}
     >
       {children}

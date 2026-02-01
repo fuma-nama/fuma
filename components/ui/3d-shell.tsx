@@ -4,11 +4,7 @@ import { cn } from "@/lib/cn";
 import Link from "next/link";
 import { HTMLAttributes, useEffect, useId, useRef } from "react";
 
-export function Shell({
-  children,
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement>) {
+export function Shell({ children, className, ...props }: HTMLAttributes<HTMLDivElement>) {
   const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,7 +28,7 @@ export function Shell({
       ${centerX * 2 + bounds.width / 2}px
       ${centerY * 2 + bounds.height / 2}px,
       rgba(145,145,185,0.3),
-      transparent 50%)`
+      transparent 50%)`,
       );
       box.style.setProperty(
         "transform",
@@ -40,7 +36,7 @@ export function Shell({
       ${centerY / 100},
       ${-centerX / 100},
       0,
-      ${Math.log(distance) * 1.5}deg)`
+      ${Math.log(distance) * 1.5}deg)`,
       );
     };
 
@@ -64,7 +60,7 @@ export function Shell({
       ref={boxRef}
       className={cn(
         "relative w-[94vw] h-[400px] max-w-[800px] bg-neutral-600/30 backdrop-blur-2xl rounded-3xl overflow-hidden shadow-xl shadow-neutral-950/50 animate-shell-show",
-        className
+        className,
       )}
       {...props}
     >

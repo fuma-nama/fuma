@@ -26,13 +26,7 @@ export function SVGButton() {
           <stop offset="100%" stopColor="black" />
         </linearGradient>
         <filter id="shadow">
-          <feDropShadow
-            dx="0"
-            dy="2"
-            stdDeviation="4"
-            floodColor="white"
-            floodOpacity="0.2"
-          />
+          <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="white" floodOpacity="0.2" />
         </filter>
         <rect
           width="100%"

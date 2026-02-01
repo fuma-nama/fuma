@@ -1,6 +1,6 @@
 import { resolve } from "node:url";
 import { MetadataRoute } from "next";
-import { documents } from "./source";
+import { blog } from "content/blog";
 import { baseUrl } from "@/lib/metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -25,9 +25,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.5,
     },
-    ...documents.map<MetadataRoute.Sitemap[number]>((d) => ({
+    ...blog.list().map<MetadataRoute.Sitemap[number]>((d) => ({
       url: getUrl(`/blog/${d.id}`),
-      lastModified: d.info.date,
+      lastModified: d.compiled.frontmatter.date,
       changeFrequency: "weekly",
       priority: 0.5,
     })),

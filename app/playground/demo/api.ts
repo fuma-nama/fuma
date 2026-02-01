@@ -20,7 +20,7 @@ export async function getAnimeRank(): Promise<RankingResponse> {
       headers: {
         "X-MAL-CLIENT-ID": process.env.MAL_CLIENT_ID!,
       },
-    }
+    },
   );
 
   return (await response.json()) as RankingResponse;

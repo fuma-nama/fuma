@@ -18,9 +18,7 @@ export function Canvas(props: HTMLAttributes<HTMLCanvasElement>) {
   return <canvas ref={ref} {...props} />;
 }
 
-type InstanceProps = Phenomenon["add"] extends (a: any, props: infer P) => any
-  ? P
-  : never;
+type InstanceProps = Phenomenon["add"] extends (a: any, props: infer P) => any ? P : never;
 type ExtendedInstanceProps = InstanceProps & {
   onRender: (instance: Instance) => void;
 };

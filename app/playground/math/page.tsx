@@ -22,10 +22,7 @@ export default function Page() {
       <Shell>
         <div className="flex flex-row items-center gap-4 absolute left-4 bottom-4 p-2 bg-neutral-800 shadow-lg shadow-neutral-950/50 rounded-xl">
           {functions.map((f) => (
-            <div
-              key={f.name}
-              className="inline-flex items-center gap-1 text-xs text-neutral-50/80"
-            >
+            <div key={f.name} className="inline-flex items-center gap-1 text-xs text-neutral-50/80">
               <svg
                 viewBox="0 0 24 24"
                 fill={f.color}

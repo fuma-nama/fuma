@@ -72,17 +72,11 @@ function createRenderer({ canvas }: { canvas: HTMLCanvasElement }) {
     const now = Date.now();
     const dt = (now - lastRender) / 1000;
 
-    if (
-      (x <= 0 && speedX < 0) ||
-      (x + 2 * r >= canvas.clientWidth && speedX > 0)
-    ) {
+    if ((x <= 0 && speedX < 0) || (x + 2 * r >= canvas.clientWidth && speedX > 0)) {
       speedX = Math.abs(speedX) >= 1 ? -speedX * 0.5 : 0;
     }
 
-    if (
-      (y <= 0 && speedY < 0) ||
-      (y + 2 * r >= canvas.clientHeight && speedY > 0)
-    ) {
+    if ((y <= 0 && speedY < 0) || (y + 2 * r >= canvas.clientHeight && speedY > 0)) {
       speedY = Math.abs(speedY) >= 1 ? -speedY * 0.5 : 0;
     }
 

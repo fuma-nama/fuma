@@ -1,6 +1,6 @@
 import { createMetadata } from "@/lib/metadata";
-import { documents } from "@/app/source";
 import { Card } from "./card";
+import { blog } from "content/blog";
 
 export const metadata = createMetadata({
   title: "Blog",
@@ -11,13 +11,16 @@ export default function Page() {
   return (
     <main>
       <h1 className="font-semibold text-xl mb-2">Blog</h1>
-      <p className="text-sm text-neutral-400 mb-4">
-        My precious thoughts and inspirations.
-      </p>
+      <p className="text-sm text-neutral-400 mb-4">My precious thoughts and inspirations.</p>
       <div className="flex flex-col gap-2">
-        {documents.map((d) => (
-          <Card key={d.id} id={d.id} info={d.info} />
-        ))}
+        {blog
+          .list()
+          .toSorted(
+            (a, b) => b.compiled.frontmatter.date.getTime() - a.compiled.frontmatter.date.getTime(),
+          )
+          .map((d) => (
+            <Card key={d.id} id={d.id} {...d.compiled.frontmatter} />
+          ))}
       </div>
       <div className="flex flex-row text-sm flex-wrap gap-4 justify-between mt-8">
         <p className="text-neutral-400">

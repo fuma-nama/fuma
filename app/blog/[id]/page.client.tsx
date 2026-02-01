@@ -1,10 +1,7 @@
 "use client";
 import { type HTMLAttributes, useEffect, useState } from "react";
 
-export function Date({
-  value,
-  ...props
-}: { value: Date } & HTMLAttributes<HTMLDivElement>) {
+export function Date({ value, ...props }: { value: Date } & HTMLAttributes<HTMLDivElement>) {
   const [date, setDate] = useState("");
 
   useEffect(() => {

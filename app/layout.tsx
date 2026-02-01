@@ -21,12 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          inter.className,
-          "bg-neutral-950 text-neutral-50 min-h-screen dark"
-        )}
-      >
+      <body className={cn(inter.className, "bg-neutral-950 text-neutral-50 min-h-screen dark")}>
         <Main>{children}</Main>
       </body>
     </html>

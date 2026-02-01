@@ -13,7 +13,7 @@ const buttonVariants = cva(
         false: "text-neutral-100/70 hover:bg-neutral-50/10",
       },
     },
-  }
+  },
 );
 
 export default async function Page() {
@@ -25,9 +25,7 @@ export default async function Page() {
         <Sidebar />
         <ScrollArea className="flex-1 overflow-auto">
           <h2 className="font-medium text-xl mb-2">Trending</h2>
-          <p className="text-xs text-neutral-50/80 mb-4">
-            {ranking.data.length} series.
-          </p>
+          <p className="text-xs text-neutral-50/80 mb-4">{ranking.data.length} series.</p>
 
           <div className="flex flex-row gap-2 items-center bg-neutral-950/20 rounded-xl px-2 mb-4">
             <svg
@@ -72,9 +70,7 @@ function AnimeItem({ anime }: { anime: Anime }) {
         className="w-full aspect-[3/4] bg-neutral-950/20 rounded-2xl mb-2 object-cover select-none"
       />
       <p className="text-xs font-medium mb-1">{anime.title}</p>
-      <p className="text-xs text-neutral-50/80">
-        {anime.studios?.map((s) => s.name).join()}
-      </p>
+      <p className="text-xs text-neutral-50/80">{anime.studios?.map((s) => s.name).join()}</p>
     </div>
   );
 }

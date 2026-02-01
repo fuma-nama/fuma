@@ -6,14 +6,13 @@ export default function Home() {
       <h1 className="text-xl font-semibold mb-4">Fuma Nama</h1>
 
       <p className="text-sm text-neutral-400">
-        Hello there, I am an open sourcerer from Hong Kong. Currently involved
-        in software development & web design, passionated on a wide spectrum of
-        topics.
+        Hello there, I am an open sourcerer from Hong Kong. Currently involved in software
+        development & web design, passionated on a wide spectrum of topics.
         <br />
         <br />
-        Besides, I love the joy of creating content, art, and the formation of
-        interactive, graceful websites. During my leisure, I also investigate in
-        artificial intelligence technologies. Having fun in coding!
+        Besides, I love the joy of creating content, art, and the formation of interactive, graceful
+        websites. During my leisure, I also investigate in artificial intelligence technologies.
+        Having fun in coding!
         <br />
         <br />
         Creator of{" "}
@@ -23,8 +22,7 @@ export default function Home() {
         >
           Fumadocs
         </a>
-        , a Next.js lover, an anime maniac, and contributor of many libraries I
-        love.
+        , a Next.js lover, an anime maniac, and contributor of many libraries I love.
       </p>
       <div className="flex gap-3 border-t mt-4 pt-4 border-neutral-800">
         <Badge href="https://github.com/fuma-nama">

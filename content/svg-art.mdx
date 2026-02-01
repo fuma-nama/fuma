@@ -235,11 +235,7 @@ We cannot animate the thumb with simple CSS solutions, lucky we have the exact r
 
 Using the information from our browser, we can construct a "mask map" on client, look like this:
 
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 14 236"
-  className="max-w-4 mx-auto"
->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 236" className="max-w-4 mx-auto">
   <path
     d="M1 0 L1 20 L13 36 L13 56 L1 72 L1 92 L13 108 L13 128 L1 144 L1 164 L1 180 L1 200 L13 216 L13 236"
     stroke="white"
@@ -277,9 +273,7 @@ Similar to the technique we've learnt from Animated Wires, we can use the CSS `m
   style={{
     maskImage: `url("data:image/svg+xml,${
       // URI encoded SVG image
-      encodeURIComponent(
-        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 236">...</svg>`
-      )
+      encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 236">...</svg>`)
     })`,
   }}
 >

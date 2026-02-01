@@ -5,7 +5,7 @@ import { createPrismaAdapter } from "@fuma-comment/server/adapters/prisma";
 
 const storage = createPrismaAdapter({
   db: prisma,
-  auth: 'next-auth'
+  auth: "next-auth",
 });
 
 export const { GET, DELETE, PATCH, POST } = NextComment({
@@ -19,5 +19,5 @@ export const { GET, DELETE, PATCH, POST } = NextComment({
         id: session.user.email,
       };
     },
-  }
+  },
 });

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "@fuma-comment/react/preset.css";
- 
+
 /* path of the package relative to the CSS file */
 @source '../node_modules/@fuma-comment/react/dist/**/*.js';
 @plugin "@tailwindcss/typography";
@@ -22,7 +22,7 @@
   @keyframes shell-hide {
     from {
       transform: scale(1);
-      opacity: "100%",
+      opacity: "100%";
     }
     to {
       transform: scale(0);
@@ -96,8 +96,15 @@
   background-clip: inherit;
   background-color: inherit;
   mix-blend-mode: exclusion;
-  background-size: var(--foil-size), 200% 400%, 800%, 200%;
-  background-position: center, 0% var(--bg-y),
-    calc(var(--bg-x) * -1) calc(var(--bg-y) * -1), var(--bg-x) var(--bg-y);
+  background-size:
+    var(--foil-size),
+    200% 400%,
+    800%,
+    200%;
+  background-position:
+    center,
+    0% var(--bg-y),
+    calc(var(--bg-x) * -1) calc(var(--bg-y) * -1),
+    var(--bg-x) var(--bg-y);
   background-blend-mode: soft-light, hue, hard-light;
 }

@@ -16,7 +16,6 @@
     "@auth/prisma-adapter": "^2.11.1",
     "@fuma-comment/react": "^1.4.0",
     "@fuma-comment/server": "^1.4.0",
-    "@fuma-content/next": "^0.0.2",
     "@prisma/adapter-pg": "^7.3.0",
     "@prisma/client": "^7.3.0",
     "@radix-ui/react-scroll-area": "^1.2.10",
@@ -38,6 +37,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@fuma-content/studio": "^1.0.2",
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^25.1.0",

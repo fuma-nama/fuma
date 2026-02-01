@@ -20,4 +20,4 @@ export const { GET, DELETE, PATCH, POST } = NextComment({
       };
     },
   },
-});
+}) as any;

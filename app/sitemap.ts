@@ -1,7 +1,7 @@
 import { resolve } from "node:url";
 import { MetadataRoute } from "next";
-import { blog } from "content/blog";
 import { baseUrl } from "@/lib/metadata";
+import { blogPosts } from "@/lib/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const getUrl = (v: string) => resolve(baseUrl, v);
@@ -25,8 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.5,
     },
-    ...blog.list().map<MetadataRoute.Sitemap[number]>((d) => ({
-      url: getUrl(`/blog/${d.id}`),
+    ...blogPosts.list().map<MetadataRoute.Sitemap[number]>((d) => ({
+      url: getUrl(`/blog/${d.slug}`),
       lastModified: d.compiled.frontmatter.date,
       changeFrequency: "weekly",
       priority: 0.5,

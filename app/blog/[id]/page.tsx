@@ -1,13 +1,10 @@
-import { blog } from "content/blog";
 import { cn } from "@/lib/cn";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Date } from "./page.client";
+import { CommentsWithAuth, Date } from "./page.client";
 import { createMetadata } from "@/lib/metadata";
 import { HTMLAttributes, type AnchorHTMLAttributes } from "react";
-import dynamic from "next/dynamic";
-
-const CommentsWithAuth = dynamic(() => import("./comment").then((res) => res.CommentsWithAuth));
+import { blogPosts } from "@/lib/content";
 
 function MDXLink({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   if (!href) return <a {...props} />;
@@ -44,7 +41,7 @@ function Heading({
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const document = blog.get(id);
+  const document = blogPosts.list().find((item) => item.slug === id);
   if (!document) notFound();
   const Body = document.compiled.default;
 
@@ -97,17 +94,17 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 }
 
 export function generateStaticParams() {
-  return blog.list().map((d) => ({
-    id: d.id,
+  return blogPosts.list().map((d) => ({
+    id: d.slug,
   }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const document = blog.get(id);
-  if (!document) notFound();
+  const doc = blogPosts.list().find((item) => item.slug === id);
+  if (!doc) notFound();
 
-  const frontmatter = document.compiled.frontmatter;
+  const frontmatter = doc.compiled.frontmatter;
   return createMetadata({
     title: frontmatter.title,
     description: frontmatter.description,

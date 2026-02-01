@@ -1,6 +1,6 @@
 import { Feed } from "feed";
-import { blog } from "content/blog";
 import { NextResponse } from "next/server";
+import { blogPosts } from "@/lib/content";
 
 export const revalidate = false;
 
@@ -27,11 +27,12 @@ function createFeed(): Feed {
     link: site_url,
   });
 
-  for (const post of blog.list()) {
-    const frontmatter = post.compiled.frontmatter
+  for (const post of blogPosts.list()) {
+    const frontmatter = post.compiled.frontmatter;
+
     feed.addItem({
       id: post.id,
-      link: `${site_url}/blog/${post.id}`,
+      link: `${site_url}/blog/${post.slug}`,
       title: frontmatter.title,
       description: frontmatter.description,
       author: [{ name: "Fuma Nama" }],

@@ -1,15 +1,14 @@
 "use client";
 import Link from "next/link";
-import { blog } from "content/blog";
 import { useLayoutEffect, useState } from "react";
 
 export function Card({
-  id,
+  slug,
   title,
   date: rawDate,
   description,
 }: {
-  id: string;
+  slug: string;
   title: string;
   description: string;
   date: Date;
@@ -22,7 +21,7 @@ export function Card({
 
   return (
     <Link
-      href={`/blog/${id}`}
+      href={`/blog/${slug}`}
       className="relative group overflow-hidden z-2 flex flex-row shadow-inner shadow-neutral-800 p-4 rounded-lg border border-neutral-900 -mx-4 transition-colors hover:transition-none hover:bg-neutral-900"
     >
       <div className="flex-1">

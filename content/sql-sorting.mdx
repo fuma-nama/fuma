@@ -37,21 +37,21 @@ We can move node "10" to the next node of "5". A destination of null refers to t
 1. Select the target node (target) and new predecessor (to)
 2. Update predecessor
 
-```sql
-update item set next_id = <target>.next_id where node.next_id = <target>.id
-```
+   ```sql
+   update item set next_id = <target>.next_id where node.next_id = <target>.id
+   ```
 
 3. Update the new predecessor (if exists)
 
-```sql
-update item set next_id = <target>.id where id = <to>.id
-```
+   ```sql
+   update item set next_id = <target>.id where id = <to>.id
+   ```
 
 4. Update the node itself
 
-```sql
-update item set next_id = <to>.next_id where id = <target>.id
-```
+   ```sql
+   update item set next_id = <to>.next_id where id = <target>.id
+   ```
 
 When the users request the list, select all items and construct it dynamically. (starting from tail)
 

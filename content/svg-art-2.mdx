@@ -10,7 +10,7 @@ import { ExampleThumbBox, ExampleOffsetDistance } from "./svg-art-2";
 
 It has been a while since [my last post about SVG](/blog/svg-art), the Table of Contents (ToC) design of Fumadocs also inspired many other cool designs.
 
-I would like to dive into the core idea behind some recent improvements to Fumadocs' Toc.
+I would like to dive into the core idea behind some recent improvements to Fumadocs' TOC.
 
 ![Preview](/blog/fumadocs-toc-2.png)
 
@@ -60,13 +60,17 @@ For example, this is the updated code of the `svg` between each `div` component.
 
   In practice, we use `(x[i - 1], y[i] - 4)` and `(x[i], y[i - 1] + 4)` as control points, `(x[i], y[i])` as end point, where `x[i]` & `y[i]` means the coordinates of ith `div`.
 
+We can vistualize the points as:
+
+![Points](/blog/toc-7.png)
+
 Same for the client-side thumb SVG generator function:
 
 ```ts
 if (i === 0) {
-  d += ` M${offset} ${top} L${offset} ${bottom}`;
+  d += ` M${offsetX} ${offsetY} L${offsetX} ${offsetY + height}`;
 } else {
-  d += ` C ${upperOffset} ${top - 4} ${offset} ${b0! + 4} ${offset} ${top} L${offset} ${bottom}`;
+  d += ` C ${upperOffsetX} ${offsetY - 4} ${offsetX} ${upperOffsetY + 4} ${offsetX} ${offsetY} L${offsetX} ${offsetY + height}`;
 }
 ```
 

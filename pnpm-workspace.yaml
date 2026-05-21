@@ -1,0 +1,6 @@
+allowBuilds:
+  "@prisma/engines": true
+  esbuild: false
+  msgpackr-extract: false
+  prisma: true
+  sharp: false

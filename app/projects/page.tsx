@@ -14,9 +14,21 @@ const projects: (ProjectProps & { tag: string })[] = [
   },
   {
     tag: "project",
+    name: "Fumapress",
+    description: "A site generator powered by Fumadocs.",
+    href: "https://press.fumadocs.dev",
+  },
+  {
+    tag: "project",
     name: "Shark Chat",
     description: "A modern chat app.",
     href: "https://shark-chat.vercel.app",
+  },
+  {
+    tag: "project",
+    name: "Tegami",
+    description: "A tool to manage changelogs, versioning, and publishing in monorepo.",
+    href: "https://tegami.fuma-nama.dev",
   },
   {
     tag: "project",

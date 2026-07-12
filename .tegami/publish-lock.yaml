@@ -1,0 +1,12 @@
+core:changelogs:
+  - content: "---\npackages:\n  npm:@fumari/sponsors:\n    type: minor\n---\n\n## Add sponsor components and API\n\nPublish the reusable sponsor marquee, its styles, and a tiny client for the public sponsor API.\n"
+    filename: 2026-07-12-sponsors-package.md
+    v: 0.0.0
+core:packages:
+  - changelogIds:
+      - 2026-07-12-sponsors-package.md
+    id: npm:@fumari/sponsors
+    updated: true
+npm:packages:
+  - id: npm:@fumari/sponsors
+  - id: npm:fuma-nama

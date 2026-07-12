@@ -1,6 +1,6 @@
 {
   "name": "@fumari/sponsors",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Sponsor API client and marquee component for Fuma Nama's open-source projects.",
   "homepage": "https://fuma-nama.dev/sponsors",
   "license": "MIT",

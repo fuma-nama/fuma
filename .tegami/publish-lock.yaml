@@ -7,6 +7,8 @@ core:packages:
       - 2026-07-12-sponsors-package.md
     id: npm:@fumari/sponsors
     updated: true
+npm:mark-latest:
+  - id: npm:@fumari/sponsors
 npm:packages:
   - id: npm:@fumari/sponsors
   - id: npm:fuma-nama

@@ -75,15 +75,13 @@ export async function getSponsors(owner: string = "fuma-nama"): Promise<Sponsor[
       }
     `);
 
-    const sponsors = response.user.sponsorshipsAsMaintainer.nodes.map(
-      (node): Sponsor => ({
-        ...node.sponsorEntity,
-        isActive: node.isActive,
-        isOneTimePayment: node.isOneTimePayment,
-        name: node.sponsorEntity.name || node.sponsorEntity.login,
-        tier: node.tier,
-      }),
-    );
+    const sponsors = response.user.sponsorshipsAsMaintainer.nodes.map((node): Sponsor => ({
+      ...node.sponsorEntity,
+      isActive: node.isActive,
+      isOneTimePayment: node.isOneTimePayment,
+      name: node.sponsorEntity.name || node.sponsorEntity.login,
+      tier: node.tier,
+    }));
 
     return sponsors.sort(
       (a, b) =>

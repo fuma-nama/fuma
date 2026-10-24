@@ -1,4 +1,4 @@
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentProps, JSX, ReactNode } from "react";
 
 export interface MarqueeProps extends ComponentProps<"div"> {
   reverse?: boolean;
@@ -20,7 +20,7 @@ export function Marquee({
   vertical = false,
   repeat = 4,
   ...props
-}: MarqueeProps) {
+}: MarqueeProps): JSX.Element {
   return (
     <div
       {...props}

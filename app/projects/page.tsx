@@ -128,6 +128,12 @@ const projects: (ProjectProps & { tag: string })[] = [
     href: "https://github.com/fuma-nama/discord-bot-template",
   },
   {
+    tag: "experimental",
+    name: "Fumadocs MV",
+    description: "A music video for Fumadocs, made with Opus.",
+    href: "https://fumadocs-mv.vercel.app",
+  },
+  {
     tag: "legacy",
     name: "Old Portfolio",
     description: "My outdated yet well-designed portfolio.",

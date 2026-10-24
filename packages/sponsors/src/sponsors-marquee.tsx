@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react";
+import type { ComponentProps, JSX } from "react";
 import { getSponsors, sponsorsApiUrl, type APISponsorItem, type TierName } from "./api";
 import { Marquee } from "./marquee";
 
@@ -25,7 +25,7 @@ export async function SponsorsMarquee({
   fetchOptions = { next: { revalidate: 3600 } },
   className,
   ...props
-}: SponsorsMarqueeProps = {}) {
+}: SponsorsMarqueeProps = {}): Promise<JSX.Element | null> {
   let sponsors: APISponsorItem[];
   try {
     sponsors = await getSponsors(apiUrl, fetchOptions);

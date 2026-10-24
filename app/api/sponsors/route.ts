@@ -21,11 +21,9 @@ export interface APISponsorItem {
 export async function GET() {
   const sponsors = await getSponsors();
   return Response.json(
-    sponsors.map(
-      (item): APISponsorItem => ({
-        ...item,
-        tierName: tiers.find((tier) => item.tier.monthlyPriceInDollars >= tier.min)?.name,
-      }),
-    ),
+    sponsors.map((item): APISponsorItem => ({
+      ...item,
+      tierName: tiers.find((tier) => item.tier.monthlyPriceInDollars >= tier.min)?.name,
+    })),
   );
 }

@@ -66,9 +66,42 @@
   height: 0.875rem;
 }
 
+/*
+ * The edges fade into the card through gradient overlays rather than a mask: in Chrome a mask over
+ * moving content costs an offscreen render pass every frame. Set `--fumari-sponsors-marquee-fade`
+ * to the color of the surface the marquee sits on.
+ */
 .fumari-sponsors-marquee-track {
+  position: relative;
   padding-inline: 0;
-  mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+}
+
+.fumari-sponsors-marquee-track::before,
+.fumari-sponsors-marquee-track::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  z-index: 1;
+  width: 10%;
+  pointer-events: none;
+}
+
+.fumari-sponsors-marquee-track::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--fumari-sponsors-marquee-fade, var(--color-fd-card, Canvas)),
+    transparent
+  );
+}
+
+.fumari-sponsors-marquee-track::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--fumari-sponsors-marquee-fade, var(--color-fd-card, Canvas)),
+    transparent
+  );
 }
 
 .fumari-sponsors-marquee-item {

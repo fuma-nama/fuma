@@ -13,6 +13,8 @@ export default function Footer() {
 
 The component fetches the public sponsor API with a one-hour revalidation by default.
 
+The edges of the marquee fade into the color of `--fumari-sponsors-marquee-fade`, which defaults to `--color-fd-card` and otherwise to the page background. Set it when the marquee sits on another surface.
+
 Use the API entry to fetch the public sponsor feed:
 
 ```ts

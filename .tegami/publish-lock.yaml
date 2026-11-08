@@ -1,10 +1,10 @@
 core:changelogs:
-  - content: "---\npackages:\n  npm:@fumari/sponsors:\n    type: patch\n---\n\n## Fix user to organization website url mapping\n"
-    filename: 2026-08-02-msbtwox5.md
+  - content: "---\npackages:\n  npm:@fumari/sponsors:\n    type: patch\n---\n\n## Fade the marquee edges without a mask\n\nThe sponsors marquee now fades its edges with gradient overlays instead of a CSS mask, so Chrome no longer redraws the moving track offscreen on every frame.\n\nThe overlays take the color of `--fumari-sponsors-marquee-fade`, which defaults to `--color-fd-card` on Fumadocs sites and to the page background elsewhere. Set it when the marquee sits on another surface:\n\n```css\n.fumari-sponsors-marquee {\n  --fumari-sponsors-marquee-fade: var(--my-surface);\n}\n```\n"
+    filename: 2026-11-08-sfadeovl.md
     v: 0.0.0
 core:packages:
   - changelogIds:
-      - 2026-08-02-msbtwox5.md
+      - 2026-11-08-sfadeovl.md
     id: npm:@fumari/sponsors
     updated: true
 npm:packages:

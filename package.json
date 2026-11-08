@@ -1,6 +1,6 @@
 {
   "name": "fuma-nama",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "scripts": {
     "dev": "pnpm --filter @fumari/sponsors build && next dev",

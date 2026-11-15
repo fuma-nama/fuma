@@ -20,10 +20,7 @@ export interface SponsorsMarqueeProps extends Omit<ComponentProps<"div">, "child
 
 export async function SponsorsMarquee({
   apiUrl = sponsorsApiUrl,
-  sponsorsUrl = defaultSponsorsUrl,
-  visibleTiers = defaultVisibleTiers,
   fetchOptions = { next: { revalidate: 3600 } },
-  className,
   ...props
 }: SponsorsMarqueeProps = {}): Promise<JSX.Element | null> {
   let sponsors: APISponsorItem[];
@@ -32,6 +29,23 @@ export async function SponsorsMarquee({
   } catch {
     return null;
   }
+
+  return <SponsorsMarqueeView sponsors={sponsors} {...props} />;
+}
+
+/** the marquee of fetched sponsors, rendered by the server and the client `SponsorsMarquee` */
+export function SponsorsMarqueeView({
+  sponsors,
+  entering = false,
+  sponsorsUrl = defaultSponsorsUrl,
+  visibleTiers = defaultVisibleTiers,
+  className,
+  ...props
+}: Omit<SponsorsMarqueeProps, "apiUrl" | "fetchOptions"> & {
+  sponsors: APISponsorItem[];
+  /** grow into place, for sponsors that arrive after the page is shown */
+  entering?: boolean;
+}): JSX.Element | null {
   const items = sponsors.filter(
     (item) =>
       item.isActive &&
@@ -41,7 +55,7 @@ export async function SponsorsMarquee({
   );
   if (items.length === 0) return null;
 
-  return (
+  const marquee = (
     <div {...props} className={["fumari-sponsors-marquee", className].filter(Boolean).join(" ")}>
       <a href={sponsorsUrl} className="fumari-sponsors-marquee-heading">
         Sponsors
@@ -74,6 +88,8 @@ export async function SponsorsMarquee({
       </Marquee>
     </div>
   );
+
+  return entering ? <div className="fumari-sponsors-marquee-enter">{marquee}</div> : marquee;
 }
 
 function getSponsorUrl(item: APISponsorItem): string {

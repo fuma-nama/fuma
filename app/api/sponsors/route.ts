@@ -25,5 +25,7 @@ export async function GET() {
       ...item,
       tierName: tiers.find((tier) => item.tier.monthlyPriceInDollars >= tier.min)?.name,
     })),
+    // the client marquee of `@fumari/sponsors` reads it from other sites
+    { headers: { "Access-Control-Allow-Origin": "*" } },
   );
 }

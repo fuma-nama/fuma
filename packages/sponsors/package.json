@@ -20,6 +20,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./api": "./dist/api.mjs",
+    "./client": "./dist/client.mjs",
     "./package.json": "./package.json",
     "./style.css": "./dist/style.css"
   },

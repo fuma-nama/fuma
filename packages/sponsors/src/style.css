@@ -17,7 +17,8 @@
   flex-direction: row;
   justify-content: space-around;
   gap: var(--fumari-marquee-gap);
-  animation: fumari-marquee var(--fumari-marquee-duration) linear infinite;
+  animation: fumari-marquee var(--fumari-marquee-duration) linear var(--fumari-marquee-delay, 0s)
+    infinite;
 }
 
 .fumari-marquee[data-vertical="true"] .fumari-marquee-content {
@@ -117,6 +118,35 @@
   border-radius: 9999px;
 }
 
+/*
+ * Sponsors that arrive after the page is shown grow into place, so what sits above gives way instead
+ * of jumping: the row opens from 0fr while the card fades in.
+ */
+.fumari-sponsors-marquee-enter {
+  display: grid;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+  animation:
+    fumari-sponsors-marquee-expand 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    fumari-sponsors-marquee-fade 300ms 100ms ease-out backwards;
+}
+
+.fumari-sponsors-marquee-enter > .fumari-sponsors-marquee {
+  min-height: 0;
+}
+
+@keyframes fumari-sponsors-marquee-expand {
+  from {
+    grid-template-rows: 0fr;
+  }
+}
+
+@keyframes fumari-sponsors-marquee-fade {
+  from {
+    opacity: 0;
+  }
+}
+
 @keyframes fumari-marquee {
   from {
     transform: translateX(0);
@@ -142,5 +172,9 @@
 
   .fumari-marquee-content:not(:first-child) {
     display: none;
+  }
+
+  .fumari-sponsors-marquee-enter {
+    animation: none;
   }
 }

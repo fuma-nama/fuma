@@ -1,7 +1,7 @@
 import { defineConfig } from "tsdown";
 
 export default defineConfig({
-  entry: ["src/index.ts", "src/api.ts"],
+  entry: ["src/index.ts", "src/api.ts", "src/client.tsx"],
   format: "esm",
   dts: true,
   target: "es2023",

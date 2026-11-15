@@ -1,4 +1,4 @@
-export const sponsorsApiUrl = "https://fuma-nama.dev/api/sponsors";
+export const sponsorsApiUrl = "https://www.fuma-nama.dev/api/sponsors";
 
 export type TierName = "Platinum Sponsor" | "Golden Sponsor" | "Silver Sponsor";
 

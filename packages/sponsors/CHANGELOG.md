@@ -1,3 +1,10 @@
+## @fumari/sponsors@0.1.4
+
+### Client marquee entrance
+
+- The client `SponsorsMarquee` shows its card with the page and fades in only the sponsors.
+- Fix the card overflowing its container on the first page of a visit.
+
 ## @fumari/sponsors@0.1.3
 
 ### Fetch the sponsors in the browser

@@ -8,10 +8,9 @@ import {
 
 export type SponsorsMarqueeProps = Omit<ServerSponsorsMarqueeProps, "fetchOptions">;
 
-/** the sponsors of each API URL, or their pending request */
 const cache = new Map<string, APISponsorItem[] | Promise<APISponsorItem[]>>();
-/** how far the last marquee had scrolled when it unmounted: the next one, on another page, continues from there */
-let lastScroll: { time: number; leftAt: number } | undefined;
+/** when the last marquee began scrolling, so the next one, on another page, continues from there */
+let scrollStart: number | undefined;
 
 const subscribe = () => () => {};
 
@@ -30,44 +29,43 @@ function load(apiUrl: string) {
 }
 
 function keepScroll(element: HTMLDivElement) {
-  const time = lastScroll ? lastScroll.time + performance.now() - lastScroll.leftAt : 0;
-  element.style.setProperty("--fumari-marquee-delay", `${-time}ms`);
+  if (scrollStart !== undefined)
+    element.style.setProperty("--fumari-marquee-delay", `${scrollStart - performance.now()}ms`);
 
   return () => {
     const timing = element
       .querySelector(".fumari-marquee-content")
       ?.getAnimations()[0]
       ?.effect?.getComputedTiming();
-    lastScroll = {
-      // its local time stands still while paused on hover, the delay is negative
-      time: typeof timing?.localTime === "number" ? timing.localTime - (timing.delay ?? 0) : time,
-      leftAt: performance.now(),
-    };
+    // the local time stands still while paused on hover, so the pauses are kept
+    if (typeof timing?.localTime === "number")
+      scrollStart = performance.now() - timing.localTime + (timing.delay ?? 0);
   };
 }
 
 /**
  * Fetches the sponsors in the browser after hydration, so the page around it stays static.
- * It grows into place when they arrive; on later pages it shows at once and keeps scrolling from where it was.
- * Nothing is rendered when the request fails.
+ * The sponsors fade in when they arrive, later pages show them at once and keep scrolling from where they were.
+ * Nothing renders when the request fails.
  */
 export function SponsorsMarquee({
   apiUrl = sponsorsApiUrl,
   ...props
-}: SponsorsMarqueeProps = {}): JSX.Element | null {
+}: SponsorsMarqueeProps = {}): JSX.Element {
   const hydrated = useSyncExternalStore(
     subscribe,
     () => true,
     () => false,
   );
-  if (!hydrated) return null;
+  const loading = <SponsorsMarqueeView {...props} />;
+  if (!hydrated) return loading;
 
   const sponsors = load(apiUrl);
   if (Array.isArray(sponsors))
     return <SponsorsMarqueeView ref={keepScroll} sponsors={sponsors} {...props} />;
 
   return (
-    <Suspense>
+    <Suspense fallback={loading}>
       <Entering request={sponsors} {...props} />
     </Suspense>
   );

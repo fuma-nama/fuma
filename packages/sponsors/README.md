@@ -13,6 +13,12 @@ export default function Footer() {
 
 The component fetches the public sponsor API with a one-hour revalidation by default.
 
+The `SponsorsMarquee` of the client entry fetches the sponsors in the browser instead, so the page rendering it stays static:
+
+```tsx
+import { SponsorsMarquee } from "@fumari/sponsors/client";
+```
+
 The edges of the marquee fade into the color of `--fumari-sponsors-marquee-fade`, which defaults to `--color-fd-card` and otherwise to the page background. Set it when the marquee sits on another surface.
 
 Use the API entry to fetch the public sponsor feed:

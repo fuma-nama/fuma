@@ -33,29 +33,29 @@ export async function SponsorsMarquee({
   return <SponsorsMarqueeView sponsors={sponsors} {...props} />;
 }
 
-/** the marquee of fetched sponsors, rendered by the server and the client `SponsorsMarquee` */
 export function SponsorsMarqueeView({
   sponsors,
-  entering = false,
+  entering,
   sponsorsUrl = defaultSponsorsUrl,
   visibleTiers = defaultVisibleTiers,
   className,
   ...props
 }: Omit<SponsorsMarqueeProps, "apiUrl" | "fetchOptions"> & {
-  sponsors: APISponsorItem[];
-  /** grow into place, for sponsors that arrive after the page is shown */
+  /** `undefined` while loading: the card keeps its size with an empty track */
+  sponsors?: APISponsorItem[];
+  /** fade in sponsors that arrive after the page is shown */
   entering?: boolean;
 }): JSX.Element | null {
-  const items = sponsors.filter(
+  const items = sponsors?.filter(
     (item) =>
       item.isActive &&
       item.tierName &&
       item.__typename === "Organization" &&
       visibleTiers.includes(item.tierName),
   );
-  if (items.length === 0) return null;
+  if (items?.length === 0) return null;
 
-  const marquee = (
+  return (
     <div {...props} className={["fumari-sponsors-marquee", className].filter(Boolean).join(" ")}>
       <a href={sponsorsUrl} className="fumari-sponsors-marquee-heading">
         Sponsors
@@ -72,24 +72,33 @@ export function SponsorsMarqueeView({
           <path d="m12 5 7 7-7 7" />
         </svg>
       </a>
-      <Marquee pauseOnHover className="fumari-sponsors-marquee-track">
-        {items.map((item) => (
-          <a
-            key={item.login}
-            href={getSponsorUrl(item)}
-            rel="sponsored noreferrer noopener"
-            target="_blank"
-            className="fumari-sponsors-marquee-item"
-          >
-            <img src={item.avatarUrl} alt={item.name} width={20} height={20} loading="lazy" />
-            {item.name}
-          </a>
-        ))}
-      </Marquee>
+      {items ? (
+        <Marquee
+          pauseOnHover
+          className={
+            entering
+              ? "fumari-sponsors-marquee-track fumari-sponsors-marquee-enter"
+              : "fumari-sponsors-marquee-track"
+          }
+        >
+          {items.map((item) => (
+            <a
+              key={item.login}
+              href={getSponsorUrl(item)}
+              rel="sponsored noreferrer noopener"
+              target="_blank"
+              className="fumari-sponsors-marquee-item"
+            >
+              <img src={item.avatarUrl} alt={item.name} width={20} height={20} loading="lazy" />
+              {item.name}
+            </a>
+          ))}
+        </Marquee>
+      ) : (
+        <div className="fumari-marquee fumari-sponsors-marquee-track" />
+      )}
     </div>
   );
-
-  return entering ? <div className="fumari-sponsors-marquee-enter">{marquee}</div> : marquee;
 }
 
 function getSponsorUrl(item: APISponsorItem): string {
